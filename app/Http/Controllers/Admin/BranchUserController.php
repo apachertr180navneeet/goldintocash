@@ -30,8 +30,10 @@ class BranchUserController extends Controller
     {
         $rules = [
             'username'  => 'required|string|max:255|unique:branch_users,username',
-            'mobile'    => 'required|string|max:15|unique:branch_users,mobile',
+            'mobile'    => 'required|regex:/^[0-9]+$/|digits_between:10,15|unique:branch_users,mobile',
             'branch_id' => 'required|exists:branches,id',
+            'address'   => 'nullable|string|max:500',
+            'password'  => 'nullable|string|min:6',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -47,7 +49,8 @@ class BranchUserController extends Controller
             'username'  => $request->username,
             'mobile'    => $request->mobile,
             'branch_id' => $request->branch_id,
-            // status will use default from migration
+            'address'   => $request->address,
+            'password'  => bcrypt($request->password),
         ]);
 
         return response()->json([
@@ -80,6 +83,8 @@ class BranchUserController extends Controller
             'username'  => 'required|string|max:255|unique:branch_users,username,' . $request->id,
             'mobile'    => 'required|string|max:15|unique:branch_users,mobile,' . $request->id,
             'branch_id' => 'required|exists:branches,id',
+            'address'   => 'nullable|string|max:500',
+            'password'  => 'nullable|string|min:6',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -103,6 +108,8 @@ class BranchUserController extends Controller
             'username'  => $request->username,
             'mobile'    => $request->mobile,
             'branch_id' => $request->branch_id,
+            'address'   => $request->address,
+            'password'  => $request->password ? bcrypt($request->password) : $user->password,
         ]);
 
         return response()->json([

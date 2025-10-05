@@ -24,6 +24,7 @@
                         <table class="table table-bordered" id="branchTable">
                             <thead>
                                 <tr>
+                                    <th>Branch ID</th>
                                     <th>Name</th>
                                     <th>Location</th>
                                     <th>Status</th>
@@ -48,6 +49,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
+                <div class="mb-3">
+                    <label for="branchId" class="form-label">Branch ID</label>
+                    <input type="text" id="branchId" class="form-control" placeholder="Enter Branch ID" />
+                    <small class="error-text text-danger"></small>
+                </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Branch Name</label>
                     <input type="text" id="name" class="form-control" placeholder="Enter Branch Name" />
@@ -76,7 +82,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <input type="hidden" id="branchId">
+                <input type="hidden" id="id">
+                <div class="mb-3">
+                    <label for="editbranchId" class="form-label">Branch ID</label>
+                    <input type="text" id="editbranchId" class="form-control" placeholder="Enter Branch ID" />
+                    <small class="error-text text-danger"></small>
+                </div>
                 <div class="mb-3">
                     <label for="editname" class="form-label">Branch Name</label>
                     <input type="text" id="editname" class="form-control" placeholder="Enter Branch Name" />
@@ -107,6 +118,7 @@ $(document).ready(function() {
             type: 'GET',
         },
         columns: [
+            { data: "branchId" },
             { data: "name" },
             { data: "location" },
             {
@@ -136,6 +148,7 @@ $(document).ready(function() {
         const data = {
             name: $('#name').val(),
             location: $('#location').val(),
+            branchId: $('#branchId').val(),
             _token: $('meta[name="csrf-token"]').attr('content')
         };
         $('.error-text').text('');
@@ -160,7 +173,8 @@ $(document).ready(function() {
     window.editBranch = function(id) {
         const url = '{{ route("admin.branch.get", ":id") }}'.replace(':id', id);
         $.get(url, function(data) {
-            $('#branchId').val(data.id);
+            $('#id').val(data.id);
+            $('#editbranchId').val(data.branchId);
             $('#editname').val(data.name);
             $('#editlocation').val(data.location);
             $('#editModal').modal('show');
@@ -170,7 +184,8 @@ $(document).ready(function() {
     // Save Edit
     $('#EditBranch').click(function() {
         const data = {
-            id: $('#branchId').val(),
+            id: $('#id').val(),
+            branchId: $('#editbranchId').val(),
             name: $('#editname').val(),
             location: $('#editlocation').val(),
             _token: $('meta[name="csrf-token"]').attr('content')

@@ -41,7 +41,8 @@ class GoldLoanController extends Controller
             'bank_branch' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'gold_net_weight' => 'required|numeric',
-            'mobile_no' => 'required|string|max:15',
+            'mobile_no' => 'required|regex:/^[0-9]+$/|digits_between:10,15|max:11',
+            'family_mobile_no' => 'nullable|regex:/^[0-9]+$/|digits_between:10,15|max:11',
             'gold_loan_amount' => 'required|numeric',
         ];
 
@@ -55,7 +56,7 @@ class GoldLoanController extends Controller
         }
 
         $goldLoan = GoldLoan::create([
-            'date' => $request->date,
+            'date' => \Carbon\Carbon::parse($request->date)->format('d-m-Y'),
             'bank_branch' => $request->bank_branch,
             'name' => $request->name,
             'gold_net_weight' => $request->gold_net_weight,
@@ -79,7 +80,6 @@ class GoldLoanController extends Controller
         ], 201);
     }
 
-    // Fetch single gold loan by ID
     public function get($id)
     {
         $goldLoan = GoldLoan::find($id);
@@ -90,6 +90,10 @@ class GoldLoanController extends Controller
                 'message' => 'Gold Loan not found',
             ], 404);
         }
+
+        // Format only the date field
+        $goldLoan->date = \Carbon\Carbon::parse($goldLoan->date)->format('d-m-Y');
+
 
         return response()->json($goldLoan, 200);
     }
@@ -126,7 +130,7 @@ class GoldLoanController extends Controller
         }
 
         $goldLoan->update([
-            'date' => $request->date,
+            'date' => \Carbon\Carbon::parse($request->date)->format('d-m-Y'),
             'bank_branch' => $request->bank_branch,
             'name' => $request->name,
             'gold_net_weight' => $request->gold_net_weight,

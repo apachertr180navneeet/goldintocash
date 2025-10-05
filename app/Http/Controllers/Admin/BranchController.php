@@ -29,6 +29,7 @@ class BranchController extends Controller
         $rules = [
             'name'     => 'required|string|max:255|unique:branches,name',
             'location' => 'required|string|max:255',
+            'branchId' => 'required|string|max:100|unique:branches,branchId',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -43,6 +44,7 @@ class BranchController extends Controller
         $branch = Branch::create([
             'name'     => $request->name,
             'location' => $request->location,
+            'branchId' => $request->branchId,
             // status will use default from migration (active/inactive)
         ]);
 
@@ -75,6 +77,7 @@ class BranchController extends Controller
             'id'       => 'required|exists:branches,id',
             'name'     => 'required|string|max:255|unique:branches,name,' . $request->id,
             'location' => 'required|string|max:255',
+            'branchId' => 'required|string|max:100|unique:branches,branchId,' . $request->id,
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -97,6 +100,7 @@ class BranchController extends Controller
         $branch->update([
             'name'     => $request->name,
             'location' => $request->location,
+            'branchId' => $request->branchId,
         ]);
 
         return response()->json([

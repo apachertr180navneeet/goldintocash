@@ -191,6 +191,11 @@
                             <input type="text" id="edit_city" name="city" class="form-control" />
                         </div>
                         <div class="col-md-4">
+                            <label class="form-label">Gold Loan Amount</label>
+                            <input type="text" id="edit_gold_loan_amount" name="gold_loan_amount" class="form-control" />
+                            <small class="error-text text-danger"></small>
+                        </div>
+                        <div class="col-md-4">
                             <label class="form-label">Aadhar Card</label>
                             <input type="file" id="edit_aadhar_card" name="aadhar_card" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
                             <small class="error-text text-danger"></small>
@@ -204,10 +209,6 @@
                             <label class="form-label">Gold Loan Slip</label>
                             <input type="file" id="edit_gold_loan_slip" name="gold_loan_slip" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
                             <small class="error-text text-danger"></small>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Gold Loan Slip</label>
-                            <input type="text" id="edit_gold_loan_slip" name="gold_loan_slip" class="form-control" />
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Branch</label>
@@ -343,8 +344,9 @@ $(document).ready(function(){
     window.editGoldLoan = function(id){
         const url = '{{ route("admin.goldLoan.get", ":id") }}'.replace(':id', id);
         $.get(url, function(data){
+            let formattedDate = data.date ? data.date.split('T')[0] : '';
             $('#goldLoanId').val(data.id);
-            $('#edit_date').val(data.date);
+            $('#edit_date').val(formattedDate);
             $('#edit_bank_branch').val(data.bank_branch);
             $('#edit_name').val(data.name);
             $('#edit_gold_net_weight').val(data.gold_net_weight);
@@ -353,12 +355,24 @@ $(document).ready(function(){
             $('#edit_address').val(data.address);
             $('#edit_city').val(data.city);
             $('#edit_gold_loan_amount').val(data.gold_loan_amount);
-            $('#edit_aadhar_card').val(data.aadhar_card);
-            $('#edit_pan_card').val(data.pan_card);
-            $('#edit_gold_loan_slip').val(data.gold_loan_slip);
+
+            // ✅ First set branch
             $('#edit_branch').val(data.branch);
-            $('#edit_branch_user').val(data.branch_user);
-            $('#edit_status').val(data.status);
+
+            // ✅ Then load users for this branch
+            if(data.branch){
+                $.get(`/admin/branch-users/${data.branch}`, function(users){
+                    $('#edit_branch_user').empty().append('<option value="">Select Branch User</option>');
+                    users.forEach(user=>{
+                        $('#edit_branch_user').append(
+                            `<option value="${user.id}" ${user.id==data.branch_user?'selected':''}>${user.username}</option>`
+                        );
+                    });
+                });
+            } else {
+                $('#edit_branch_user').empty().append('<option value="">Select Branch User</option>');
+            }
+
             $('#editModal').modal('show');
         });
     };

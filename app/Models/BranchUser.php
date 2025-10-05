@@ -14,6 +14,8 @@ class BranchUser extends Model
         'username',
         'mobile',
         'branch_id',
+        'address',
+        'password',
         'status',
     ];
 

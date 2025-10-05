@@ -70,6 +70,16 @@
                     </select>
                     <small class="error-text text-danger"></small>
                 </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" id="address" class="form-control" placeholder="Enter Address" />
+                    <small class="error-text text-danger"></small>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter Password" />
+                    <small class="error-text text-danger"></small>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
@@ -107,6 +117,16 @@
                         <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                         @endforeach
                     </select>
+                    <small class="error-text text-danger"></small>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" id="editaddress" class="form-control" placeholder="Enter Address" />
+                    <small class="error-text text-danger"></small>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="editpassword" class="form-control" placeholder="Enter Password" />
                     <small class="error-text text-danger"></small>
                 </div>
             </div>
@@ -160,6 +180,8 @@ $(document).ready(function() {
             username: $('#username').val(),
             mobile: $('#mobile').val(),
             branch_id: $('#branch_id').val(),
+            address: $('#address').val(),
+            password: $('#password').val(),
             _token: $('meta[name="csrf-token"]').attr('content')
         };
         $('.error-text').text('');
@@ -188,6 +210,7 @@ $(document).ready(function() {
             $('#editusername').val(data.username);
             $('#editmobile').val(data.mobile);
             $('#editbranch_id').val(data.branch_id);
+            $('#editaddress').val(data.address);
             $('#editModal').modal('show');
         }).fail(function(){ setFlash("error","Branch user not found."); });
     };
@@ -199,6 +222,8 @@ $(document).ready(function() {
             username: $('#editusername').val(),
             mobile: $('#editmobile').val(),
             branch_id: $('#editbranch_id').val(),
+            address: $('#editaddress').val(),
+            password: $('#editpassword').val(),
             _token: $('meta[name="csrf-token"]').attr('content')
         };
         $.post('{{ route("admin.branchUser.update") }}', data, function(response){
