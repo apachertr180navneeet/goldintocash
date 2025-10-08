@@ -52,7 +52,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form id="addForm">
+                <form id="addForm" enctype="multipart/form-data">
                     @csrf
                     <div class="row g-3">
                         <div class="col-md-4">
@@ -99,17 +99,17 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Aadhar Card</label>
-                            <input type="file" name="aadhar_card" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
+                            <input type="file" name="aadhar_card" class="form-control file-input" accept=".jpg,.jpeg,.png,.pdf" />
                             <small class="error-text text-danger"></small>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">PAN Card</label>
-                            <input type="file" name="pan_card" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
+                            <input type="file" name="pan_card" class="form-control file-input" accept=".jpg,.jpeg,.png,.pdf" />
                             <small class="error-text text-danger"></small>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Gold Loan Slip</label>
-                            <input type="file" name="gold_loan_slip" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
+                            <input type="file" name="gold_loan_slip" class="form-control file-input" accept=".jpg,.jpeg,.png,.pdf" />
                             <small class="error-text text-danger"></small>
                         </div>
                         <div class="col-md-4">
@@ -149,10 +149,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form id="editForm">
+                <form id="editForm" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" id="goldLoanId" name="id">
                     <div class="row g-3">
+                        <!-- Fields similar to Add Modal -->
                         <div class="col-md-4">
                             <label class="form-label">Date</label>
                             <input type="date" id="edit_date" name="date" class="form-control" />
@@ -197,19 +198,17 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Aadhar Card</label>
-                            <input type="file" id="edit_aadhar_card" name="aadhar_card" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
+                            <input type="file" id="edit_aadhar_card" name="aadhar_card" class="form-control file-input" accept=".jpg,.jpeg,.png,.pdf" />
                             <div id="aadharPreview" class="mt-2"></div>
                         </div>
-
                         <div class="col-md-4">
                             <label class="form-label">PAN Card</label>
-                            <input type="file" id="edit_pan_card" name="pan_card" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
+                            <input type="file" id="edit_pan_card" name="pan_card" class="form-control file-input" accept=".jpg,.jpeg,.png,.pdf" />
                             <div id="panPreview" class="mt-2"></div>
                         </div>
-
                         <div class="col-md-4">
                             <label class="form-label">Gold Loan Slip</label>
-                            <input type="file" id="edit_gold_loan_slip" name="gold_loan_slip" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
+                            <input type="file" id="edit_gold_loan_slip" name="gold_loan_slip" class="form-control file-input" accept=".jpg,.jpeg,.png,.pdf" />
                             <div id="slipPreview" class="mt-2"></div>
                         </div>
                         <div class="col-md-4">
@@ -245,97 +244,95 @@
 <script>
 $(document).ready(function(){
 
-    // Load branch users dynamically on change (Add Form)
+    // ===============================
+    // File size validation function
+    // ===============================
+    function validateFileSize(input, maxMB = 10) {
+        const files = input.files;
+        const maxBytes = maxMB * 1024 * 1024;
+        for (let i = 0; i < files.length; i++) {
+            if(files[i].size > maxBytes){
+                alert(`File "${files[i].name}" exceeds ${maxMB} MB`);
+                $(input).val('');
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // File input change validation
+    $('.file-input').change(function(){
+        validateFileSize(this, 10);
+    });
+
+    // ===============================
+    // Branch user load dynamically
+    // ===============================
     $('#branch').change(function(){
         let branchId = $(this).val();
         if(branchId){
             $.get(`/admin/branch-users/${branchId}`, function(users){
                 $('#branch_user').empty().append('<option value="">Select Branch User</option>');
-                users.forEach(user=>{
-                    $('#branch_user').append(`<option value="${user.id}">${user.username}</option>`);
-                });
+                users.forEach(user => $('#branch_user').append(`<option value="${user.id}">${user.username}</option>`));
             });
-        } else {
-            $('#branch_user').empty().append('<option value="">Select Branch User</option>');
-        }
+        } else $('#branch_user').empty().append('<option value="">Select Branch User</option>');
     });
 
-    // Load branch users dynamically on change (Edit Form)
     $('#edit_branch').change(function(){
         let branchId = $(this).val();
         if(branchId){
             $.get(`/admin/branch-users/${branchId}`, function(users){
                 $('#edit_branch_user').empty().append('<option value="">Select Branch User</option>');
-                users.forEach(user=>{
-                    $('#edit_branch_user').append(`<option value="${user.id}">${user.username}</option>`);
-                });
+                users.forEach(user => $('#edit_branch_user').append(`<option value="${user.id}">${user.username}</option>`));
             });
-        } else {
-            $('#edit_branch_user').empty().append('<option value="">Select Branch User</option>');
-        }
+        } else $('#edit_branch_user').empty().append('<option value="">Select Branch User</option>');
     });
 
+    // ===============================
+    // DataTable
+    // ===============================
     const table = $('#goldLoanTable').DataTable({
         processing:true,
-        ajax:{
-            url:"{{ route('admin.goldLoan.getall') }}",
-            type:"GET"
-        },
+        ajax:"{{ route('admin.goldLoan.getall') }}",
         columns:[
-            {
-                data: "date",
-                render: (data) => {
-                    if (!data) return "";
-                    let dateObj = new Date(data);
-                    let day   = String(dateObj.getDate()).padStart(2, '0');
-                    let month = String(dateObj.getMonth() + 1).padStart(2, '0');
-                    let year  = dateObj.getFullYear();
-                    return `${day}-${month}-${year}`;
-                }
-            },
+            { data:"date", render: d => d ? new Date(d).toLocaleDateString() : '' },
             { data:"name" },
             { data:"bank_branch" },
             { data:"gold_net_weight" },
             { data:"mobile_no" },
             { data:"gold_loan_amount" },
-            {
-                data:"status",
-                render:(data,type,row)=>{
-                    let color = row.status==="pending"?"warning":row.status==="approved"?"success":"danger";
-                    return `<span class="badge bg-label-${color}">${row.status}</span>`;
-                }
-            },
-            {
-                data:"action",
-                render:(data,type,row)=>{
-                    const statusSelect = `<select onchange="updateGoldLoanStatus(${row.id}, this.value)" class="form-select form-select-sm mb-2">
-                        <option value="pending" ${row.status==='pending'?'selected':''}>Pending</option>
-                        <option value="approved" ${row.status==='approved'?'selected':''}>Approved</option>
-                        <option value="rejected" ${row.status==='rejected'?'selected':''}>Rejected</option>
-                    </select>`;
-                    const editBtn = `<button class="btn btn-sm btn-warning" onclick="editGoldLoan(${row.id})">Edit</button>`;
-                    const delBtn = `<button class="btn btn-sm btn-danger" onclick="deleteGoldLoan(${row.id})">Delete</button>`;
-                    return `${statusSelect} ${editBtn} ${delBtn}`;
-                }
-            }
+            { data:"status", render:(d,type,row)=>`<span class="badge bg-label-${row.status==='pending'?'warning':row.status==='approved'?'success':'danger'}">${row.status}</span>` },
+            { data:"action", render:(d,type,row)=>{
+                return `
+                <select onchange="updateGoldLoanStatus(${row.id}, this.value)" class="form-select form-select-sm mb-2">
+                    <option value="pending" ${row.status==='pending'?'selected':''}>Pending</option>
+                    <option value="approved" ${row.status==='approved'?'selected':''}>Approved</option>
+                    <option value="rejected" ${row.status==='rejected'?'selected':''}>Rejected</option>
+                </select>
+                <button class="btn btn-sm btn-warning" onclick="editGoldLoan(${row.id})">Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteGoldLoan(${row.id})">Delete</button>
+                `;
+            }}
         ]
     });
 
-    // Add Gold Loan
-    // Add Gold Loan
+    // ===============================
+    // Add Gold Loan AJAX
+    // ===============================
     $('#AddGoldLoan').click(function(){
-        let form = $('#addForm')[0]; // get raw form element
-        let formData = new FormData(form); // build FormData with files
+        let isValid = true;
+        $('#addForm input[type="file"]').each(function(){ if(!validateFileSize(this, 10)) isValid=false; });
+        if(!isValid) return false;
 
+        let formData = new FormData($('#addForm')[0]);
         $('.error-text').text('');
-
         $.ajax({
-            url: '{{ route("admin.goldLoan.store") }}',
-            type: 'POST',
+            url:'{{ route("admin.goldLoan.store") }}',
+            type:'POST',
             data: formData,
-            processData: false, // ❌ don't let jQuery process the data
-            contentType: false, // ❌ don't set default contentType
-            success: function(res){
+            processData:false,
+            contentType:false,
+            success: res=>{
                 if(res.success){
                     Toast.fire({icon:'success', title:res.message});
                     $('#addModal').modal('hide');
@@ -343,24 +340,24 @@ $(document).ready(function(){
                     table.ajax.reload();
                 }
             },
-            error: function(xhr){
+            error: xhr=>{
                 if(xhr.status===422){
                     let errors = xhr.responseJSON.errors;
                     for(let field in errors){
                         $(`[name=${field}]`).siblings('.error-text').text(errors[field][0]);
                     }
-                } else {
-                    Toast.fire({icon:'error', title:'Unexpected error occurred.'});
-                }
+                } else Toast.fire({icon:'error', title:'Unexpected error occurred.'});
             }
         });
     });
 
+    // ===============================
     // Edit Gold Loan
+    // ===============================
     window.editGoldLoan = function(id){
         const url = '{{ route("admin.goldLoan.get", ":id") }}'.replace(':id', id);
         $.get(url, function(data){
-            let formattedDate = data.date ? data.date : '';
+            let formattedDate = data.date ? new Date(data.date).toISOString().slice(0,10) : '';
             $('#goldLoanId').val(data.id);
             $('#edit_date').val(formattedDate);
             $('#edit_bank_branch').val(data.bank_branch);
@@ -371,90 +368,59 @@ $(document).ready(function(){
             $('#edit_address').val(data.address);
             $('#edit_city').val(data.city);
             $('#edit_gold_loan_amount').val(data.gold_loan_amount);
+            $('#edit_branch').val(data.branch).trigger('change');
 
-            $('#edit_branch').val(data.branch);
-
-            if(data.branch){
-                $.get(`/admin/branch-users/${data.branch}`, function(users){
-                    $('#edit_branch_user').empty().append('<option value="">Select Branch User</option>');
-                    users.forEach(user=>{
-                        $('#edit_branch_user').append(
-                            `<option value="${user.id}" ${user.id==data.branch_user?'selected':''}>${user.username}</option>`
-                        );
-                    });
-                });
-            } else {
-                $('#edit_branch_user').empty().append('<option value="">Select Branch User</option>');
-            }
-
-            // ✅ Image previews
-            if(data.aadhar_card_url){
-                $('#aadharPreview').html(`<a href="${data.aadhar_card_url}" target="_blank">View Aadhar</a>`);
-            } else {
-                $('#aadharPreview').html('');
-            }
-
-            if(data.pan_card_url){
-                $('#panPreview').html(`<a href="${data.pan_card_url}" target="_blank">View PAN</a>`);
-            } else {
-                $('#panPreview').html('');
-            }
-
-            if(data.gold_loan_slip_url){
-                $('#slipPreview').html(`<a href="${data.gold_loan_slip_url}" target="_blank">View Loan Slip</a>`);
-            } else {
-                $('#slipPreview').html('');
-            }
+            if(data.aadhar_card_url) $('#aadharPreview').html(`<a href="${data.aadhar_card_url}" target="_blank">View Aadhar</a>`); else $('#aadharPreview').html('');
+            if(data.pan_card_url) $('#panPreview').html(`<a href="${data.pan_card_url}" target="_blank">View PAN</a>`); else $('#panPreview').html('');
+            if(data.gold_loan_slip_url) $('#slipPreview').html(`<a href="${data.gold_loan_slip_url}" target="_blank">View Loan Slip</a>`); else $('#slipPreview').html('');
 
             $('#editModal').modal('show');
         });
     };
 
-
-    // Save Edit
-    // Save Edit
     $('#EditGoldLoan').click(function(){
-        let form = $('#editForm')[0];
-        let formData = new FormData(form);
+        let isValid = true;
+        $('#editForm input[type="file"]').each(function(){ if(!validateFileSize(this, 10)) isValid=false; });
+        if(!isValid) return false;
 
+        let formData = new FormData($('#editForm')[0]);
         $.ajax({
-            url: '{{ route("admin.goldLoan.update") }}',
-            type: 'POST',
+            url:'{{ route("admin.goldLoan.update") }}',
+            type:'POST',
             data: formData,
-            processData: false,
-            contentType: false,
-            success: function(res){
+            processData:false,
+            contentType:false,
+            success: res=>{
                 if(res.success){
                     Toast.fire({icon:'success', title:res.message});
                     $('#editModal').modal('hide');
                     table.ajax.reload();
                 }
             },
-            error: function(xhr){
+            error: xhr=>{
                 if(xhr.status===422){
                     let errors = xhr.responseJSON.errors;
                     $('#editForm').find('.error-text').text('');
                     for(let field in errors){
                         $(`#editForm [name=${field}]`).siblings('.error-text').text(errors[field][0]);
                     }
-                } else {
-                    Toast.fire({icon:'error', title:'Unexpected error occurred.'});
-                }
+                } else Toast.fire({icon:'error', title:'Unexpected error occurred.'});
             }
         });
     });
 
-    // Update status
+    // ===============================
+    // Update Status
+    // ===============================
     window.updateGoldLoanStatus = function(id,status){
         $.post('{{ route("admin.goldLoan.status") }}', {id,status,_token:$('meta[name="csrf-token"]').attr('content')}, function(res){
-            if(res.success){
-                Toast.fire({icon:'success', title:res.message});
-                table.ajax.reload();
-            }
+            if(res.success) { Toast.fire({icon:'success', title:res.message}); table.ajax.reload(); }
         });
     };
 
+    // ===============================
     // Delete Gold Loan
+    // ===============================
     window.deleteGoldLoan = function(id){
         Swal.fire({
             title:"Are you sure?",
@@ -462,7 +428,7 @@ $(document).ready(function(){
             icon:"warning",
             showCancelButton:true,
             confirmButtonText:"Yes"
-        }).then((result)=>{
+        }).then(result=>{
             if(result.isConfirmed){
                 const url = '{{ route("admin.goldLoan.destroy", ":id") }}'.replace(':id', id);
                 $.ajax({
