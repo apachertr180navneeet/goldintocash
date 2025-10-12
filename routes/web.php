@@ -23,6 +23,9 @@ use App\Http\Controllers\Admin\{
 // Public routes
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/about-us', [HomeController::class, 'about'])->name('about');
+Route::get('/services', [HomeController::class, 'services'])->name('services');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 // Admin routes
 Route::prefix('admin')->name('admin.')->group(function () {

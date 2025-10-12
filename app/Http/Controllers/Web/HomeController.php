@@ -11,4 +11,21 @@ class HomeController extends Controller
     {
         return view('web.home.index');
     }
+
+
+    public function about()
+    {
+        return view('web.home.about');
+    }
+
+    public function services()
+    {
+        return view('web.home.services');
+    }
+
+
+    public function contact()
+    {
+        return view('web.home.contact');
+    }
 }
