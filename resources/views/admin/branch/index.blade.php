@@ -27,6 +27,8 @@
                                     <th>Branch ID</th>
                                     <th>Name</th>
                                     <th>Location</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -64,6 +66,16 @@
                     <input type="text" id="location" class="form-control" placeholder="Enter Branch Location" />
                     <small class="error-text text-danger"></small>
                 </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Branch Phone</label>
+                    <input type="text" id="phone" class="form-control" placeholder="Enter Branch Phone" />
+                    <small class="error-text text-danger"></small>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Branch Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter Branch Email" />
+                    <small class="error-text text-danger"></small>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
@@ -98,6 +110,16 @@
                     <input type="text" id="editlocation" class="form-control" placeholder="Enter Branch Location" />
                     <small class="error-text text-danger"></small>
                 </div>
+                <div class="mb-3">
+                    <label for="editphone" class="form-label">Branch Phone</label>
+                    <input type="text" id="editphone" class="form-control" placeholder="Enter Branch Phone" />
+                    <small class="error-text text-danger"></small>
+                </div>
+                <div class="mb-3">
+                    <label for="editemail" class="form-label">Branch Email</label>
+                    <input type="email" id="editemail" class="form-control" placeholder="Enter Branch Email" />
+                    <small class="error-text text-danger"></small>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
@@ -121,6 +143,8 @@ $(document).ready(function() {
             { data: "branchId" },
             { data: "name" },
             { data: "location" },
+            { data: "phone" },
+            { data: "email" },
             {
                 data: "status",
                 render: (data, type, row) => {
@@ -148,6 +172,8 @@ $(document).ready(function() {
         const data = {
             name: $('#name').val(),
             location: $('#location').val(),
+            phone: $('#phone').val(),
+            email: $('#email').val(),
             branchId: $('#branchId').val(),
             _token: $('meta[name="csrf-token"]').attr('content')
         };
@@ -177,6 +203,8 @@ $(document).ready(function() {
             $('#editbranchId').val(data.branchId);
             $('#editname').val(data.name);
             $('#editlocation').val(data.location);
+            $('#editphone').val(data.phone);
+            $('#editemail').val(data.email);
             $('#editModal').modal('show');
         }).fail(function() { setFlash("error","Branch not found."); });
     };
@@ -188,6 +216,8 @@ $(document).ready(function() {
             branchId: $('#editbranchId').val(),
             name: $('#editname').val(),
             location: $('#editlocation').val(),
+            phone: $('#editphone').val(),
+            email: $('#editemail').val(),
             _token: $('meta[name="csrf-token"]').attr('content')
         };
         $.post('{{ route("admin.branch.update") }}', data, function(response) {

@@ -14,6 +14,8 @@ class Branch extends Model
         'name',
         'location',
         'branchId',
+        'phone',
+        'email',
         'status',
     ];
 

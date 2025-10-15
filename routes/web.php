@@ -26,6 +26,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/application', [HomeController::class, 'application'])->name('application');
+
+Route::post('/application-post', [HomeController::class, 'applicationPost'])->name('application.post');
+Route::post('/contact-post', [HomeController::class, 'contactPost'])->name('contact.post');
+
 
 // Admin routes
 Route::prefix('admin')->name('admin.')->group(function () {

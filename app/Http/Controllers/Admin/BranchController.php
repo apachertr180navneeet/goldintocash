@@ -29,6 +29,8 @@ class BranchController extends Controller
         $rules = [
             'name'     => 'required|string|max:255|unique:branches,name',
             'location' => 'required|string|max:255',
+            'phone'    => 'required|regex:/^[0-9]+$/|digits_between:10,15',
+            'email'    => 'nullable|email',
             'branchId' => 'required|string|max:100|unique:branches,branchId',
         ];
 
@@ -45,6 +47,8 @@ class BranchController extends Controller
             'name'     => $request->name,
             'location' => $request->location,
             'branchId' => $request->branchId,
+            'phone'    => $request->phone,
+            'email'    => $request->email,
             // status will use default from migration (active/inactive)
         ]);
 
@@ -77,6 +81,8 @@ class BranchController extends Controller
             'id'       => 'required|exists:branches,id',
             'name'     => 'required|string|max:255|unique:branches,name,' . $request->id,
             'location' => 'required|string|max:255',
+            'phone'    => 'required|regex:/^[0-9]+$/|digits_between:10,15',
+            'email'    => 'nullable|email',
             'branchId' => 'required|string|max:100|unique:branches,branchId,' . $request->id,
         ];
 
@@ -100,6 +106,8 @@ class BranchController extends Controller
         $branch->update([
             'name'     => $request->name,
             'location' => $request->location,
+            'phone'    => $request->phone,
+            'email'    => $request->email,
             'branchId' => $request->branchId,
         ]);
 

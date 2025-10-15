@@ -43,6 +43,6 @@
                     <a href="{{ route('contact') }}" class="nav-item nav-link">Contact Us</a>
                 </div>
             </div>
-            <a href="" class="btn btn-application px-3 d-none d-lg-block">Application form </a>
+            <a href="{{ route('application') }}" class="btn btn-application px-3 d-none d-lg-block">Application form </a>
         </nav>
         <!-- Navbar End -->
