@@ -104,6 +104,7 @@ class HomeController extends Controller
             $data['date'] = Carbon::now()->format('d-m-Y');
             $data['status'] = $request->status ?? 'pending';
 
+
             // ✅ Step 5: Create new record
             $goldLoan = GoldLoan::create($data);
 

@@ -29,6 +29,7 @@ class BranchController extends Controller
         $rules = [
             'name'     => 'required|string|max:255|unique:branches,name',
             'location' => 'required|string|max:255',
+            'location_url' => 'required',
             'phone'    => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'email'    => 'nullable|email',
             'branchId' => 'required|string|max:100|unique:branches,branchId',
@@ -46,6 +47,7 @@ class BranchController extends Controller
         $branch = Branch::create([
             'name'     => $request->name,
             'location' => $request->location,
+            'location_url' => $request->location_url,
             'branchId' => $request->branchId,
             'phone'    => $request->phone,
             'email'    => $request->email,
@@ -81,6 +83,7 @@ class BranchController extends Controller
             'id'       => 'required|exists:branches,id',
             'name'     => 'required|string|max:255|unique:branches,name,' . $request->id,
             'location' => 'required|string|max:255',
+            'location_url' => 'nullable',
             'phone'    => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'email'    => 'nullable|email',
             'branchId' => 'required|string|max:100|unique:branches,branchId,' . $request->id,
@@ -106,6 +109,7 @@ class BranchController extends Controller
         $branch->update([
             'name'     => $request->name,
             'location' => $request->location,
+            'location_url' => $request->location_url,
             'phone'    => $request->phone,
             'email'    => $request->email,
             'branchId' => $request->branchId,

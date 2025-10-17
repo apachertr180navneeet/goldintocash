@@ -104,7 +104,7 @@
 
                         <div class="col-lg-6 mb-3">
                             <label class="form-label"><i class="bi bi-file-earmark-text"></i>Upload Loan Slip</label>
-                            <input type="file" class="form-control" name="loan_slip" accept=".jpg,.jpeg,.png,.pdf" required />
+                            <input type="file" class="form-control" name="gold_loan_slip" accept=".jpg,.jpeg,.png,.pdf" required />
                         </div>
 
                         <div class="col-lg-6 mb-3">

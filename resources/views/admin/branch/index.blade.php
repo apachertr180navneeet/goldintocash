@@ -26,6 +26,7 @@
                                 <tr>
                                     <th>Branch ID</th>
                                     <th>Name</th>
+                                    <th>Address</th>
                                     <th>Location</th>
                                     <th>Phone</th>
                                     <th>Email</th>
@@ -62,8 +63,13 @@
                     <small class="error-text text-danger"></small>
                 </div>
                 <div class="mb-3">
-                    <label for="location" class="form-label">Branch Location</label>
-                    <input type="text" id="location" class="form-control" placeholder="Enter Branch Location" />
+                    <label for="location" class="form-label">Branch Address</label>
+                    <input type="text" id="location" class="form-control" placeholder="Enter Branch Address" />
+                    <small class="error-text text-danger"></small>
+                </div>
+                <div class="mb-3">
+                    <label for="location_url" class="form-label">Branch Location</label>
+                    <input type="text" id="location_url" class="form-control" placeholder="Enter Branch Location" />
                     <small class="error-text text-danger"></small>
                 </div>
                 <div class="mb-3">
@@ -106,8 +112,13 @@
                     <small class="error-text text-danger"></small>
                 </div>
                 <div class="mb-3">
-                    <label for="editlocation" class="form-label">Branch Location</label>
-                    <input type="text" id="editlocation" class="form-control" placeholder="Enter Branch Location" />
+                    <label for="editlocation" class="form-label">Branch Address</label>
+                    <input type="text" id="editlocation" class="form-control" placeholder="Enter Branch Address" />
+                    <small class="error-text text-danger"></small>
+                </div>
+                <div class="mb-3">
+                    <label for="editlocationurl" class="form-label">Branch Location</label>
+                    <input type="text" id="editlocationurl" class="form-control" placeholder="Enter Branch Location" />
                     <small class="error-text text-danger"></small>
                 </div>
                 <div class="mb-3">
@@ -143,6 +154,25 @@ $(document).ready(function() {
             { data: "branchId" },
             { data: "name" },
             { data: "location" },
+            {
+                data: "location_url",
+                render: function(data, type, row) {
+                    if (data) {
+                        return `
+                            <iframe 
+                                src="${data}" 
+                                width="300" 
+                                height="200" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>`;
+                    } else {
+                        return '<span class="text-muted">No Map Available</span>';
+                    }
+                }
+            },
             { data: "phone" },
             { data: "email" },
             {
@@ -172,6 +202,7 @@ $(document).ready(function() {
         const data = {
             name: $('#name').val(),
             location: $('#location').val(),
+            location_url: $('#location_url').val(),
             phone: $('#phone').val(),
             email: $('#email').val(),
             branchId: $('#branchId').val(),
@@ -203,6 +234,7 @@ $(document).ready(function() {
             $('#editbranchId').val(data.branchId);
             $('#editname').val(data.name);
             $('#editlocation').val(data.location);
+            $('#editlocationurl').val(data.location_url);
             $('#editphone').val(data.phone);
             $('#editemail').val(data.email);
             $('#editModal').modal('show');
@@ -216,6 +248,7 @@ $(document).ready(function() {
             branchId: $('#editbranchId').val(),
             name: $('#editname').val(),
             location: $('#editlocation').val(),
+            location_url: $('#editlocationurl').val(),
             phone: $('#editphone').val(),
             email: $('#editemail').val(),
             _token: $('meta[name="csrf-token"]').attr('content')

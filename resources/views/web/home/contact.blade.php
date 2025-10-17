@@ -140,7 +140,7 @@
                             <p><i class="bi bi-telephone"></i> {{ $value->phone ?? 'N/A' }}</p>
                             <p><i class="bi bi-envelope"></i> {{ $value->email ?? 'N/A' }}</p>
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114487.29602447408!2d72.94814079540977!3d26.27048982252235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418c4eaa06ccb9%3A0x8114ea5b0ae1abb8!2sJodhpur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1760425087519!5m2!1sen!2sin"
+                                src="{{ $value->location_url ?? 'N/A' }}"
                                 width="100%"
                                 height="60%"
                                 style="border-radius: 10px;"
