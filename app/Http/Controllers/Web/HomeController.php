@@ -37,6 +37,17 @@ class HomeController extends Controller
     }
 
 
+    public function gallery()
+    {
+        return view('web.home.gallery');
+    }
+
+    public function quickEnquiry()
+    {
+        return view('web.home.quick-enquiry');
+    }
+
+
     public function contact()
     {
         $branches = Branch::where('status', 'active')->orderBy('id', 'desc')->get();

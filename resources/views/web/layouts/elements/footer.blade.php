@@ -12,25 +12,23 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h5 class="text-light mb-4">Address</h5>
-                        <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                        <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
                         <h5 class="text-light mb-4">Quick Links</h5>
                         <a class="btn btn-link" href="{{ route('home') }}">Home</a>
                         <a class="btn btn-link" href="{{ route('about') }}">About Us</a>
-                        <a class="btn btn-link" href="{{ route('services') }}">Our Services</a>
+                        <a class="btn btn-link" href="{{ route('gallery') }}">Gallery</a>
                         <a class="btn btn-link" href="{{ route('contact') }}">Contact Us</a>
+                        <a class="btn btn-link" href="{{ route('application') }}">Application Form</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h5 class="text-light mb-4">Newsletter</h5>
-                        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                        <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email" />
-                            <button type="button" class="btn btn-secondary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                        </div>
+                        <h5 class="text-light mb-4">Address</h5>
+                        <p><i class="fa fa-map-marker-alt me-3"></i>रिलायंस स्मार्ट मार्ट के पास , एयरपोर्ट रोड, जोधपुर ( राजस्थान )</p>
+                        <p><i class="fa fa-phone-alt me-3"></i>+91 97979 79812</p>
+                        <p><i class="fa fa-envelope me-2"></i>manishsoni5500@gmail.com</p>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Map</h5>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3578.003867797518!2d73.03930987541713!3d26.26153787704133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDE1JzQxLjUiTiA3M8KwMDInMzAuOCJF!5e0!3m2!1sen!2sin!4v1764411299078!5m2!1sen!2sin" width="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>

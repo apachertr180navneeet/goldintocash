@@ -27,6 +27,8 @@ Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/application', [HomeController::class, 'application'])->name('application');
+Route::get('/quick-enquiry', [HomeController::class, 'quickEnquiry'])->name('quick.enquiry');
+Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 
 Route::post('/application-post', [HomeController::class, 'applicationPost'])->name('application.post');
 Route::post('/contact-post', [HomeController::class, 'contactPost'])->name('contact.post');
