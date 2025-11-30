@@ -63,11 +63,34 @@
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="position-relative overflow-hidden rounded ps-5 pt-5 h-100" style="min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="{{ asset('website/img/lady.jpg') }}" alt="" style="object-fit: cover;" />
-                    <div class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3" style="width: 200px; height: 200px;">
-                        <div class="d-flex flex-column justify-content-center text-center bg-gold rounded h-100 p-3">
-                            <h1 class="text-dark mb-0">25</h1>
+                <!-- Mobile: Experience box on top -->
+                <div class="d-block d-lg-none d-md-none mb-3">
+                    <div class="bg-white rounded p-3 text-center" style="width: 100%">
+                        <div class="bg-gold rounded p-3">
+                            <h1 class="text-dark mb-0">15</h1>
+                            <h2 class="text-dark">Years</h2>
+                            <h5 class="text-dark mb-0">Experience</h5>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="position-relative overflow-hidden rounded ps-5 pt-5 h-100"
+                    style="min-height: 400px"
+                >
+                    <img
+                        class="year position-absolute h-100 img-fluid"
+                        src="{{ asset('website/img/lady.jpg') }}"
+                        alt=""
+                        style="object-fit: cover"
+                    />
+                    <div
+                        class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3 d-none d-lg-block d-md-block"
+                        style="width: 150px; height: 150px"
+                    >
+                        <div
+                            class="d-flex flex-column justify-content-center text-center bg-gold rounded h-100 p-3"
+                        >
+                            <h1 class="text-dark mb-0">15</h1>
                             <h2 class="text-dark">Years</h2>
                             <h5 class="text-dark mb-0">Experience</h5>
                         </div>
@@ -75,31 +98,35 @@
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="h-100">
+                <div class="h-85">
                     <h1 class="display-6 mb-5">Your Trusted Partner for Turning Gold into Cash</h1>
                     <p class="fs-5 text-primary mb-4">
-                        At Abhushan Into Cash, we believe selling your gold should be simple, fair, and worry-free. Whether it’s old jewelry, coins, or bars, our friendly team makes sure you get the best value, transparent
-                        evaluation, and instant cash—all with a smile.
+                        At Abhushan Into Cash, we believe selling your gold should be simple, fair, and
+                        worry-free. Whether it’s old jewelry, coins, or bars, our friendly team makes sure you
+                        get the best value, transparent evaluation, and instant cash—all with a smile.
                     </p>
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-04-primary.png') }}" alt="" />
+                                <img class="flex-shrink-0 me-3" src="img/icon/icon-04-primary.png" alt="" />
                                 <h5 class="mb-0">Trusted & Transparent</h5>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-03-primary.png') }}" alt="" />
+                                <img class="flex-shrink-0 me-3" src="img/icon/icon-03-primary.png" alt="" />
                                 <h5 class="mb-0">Fast & Hassle-Free</h5>
                             </div>
                         </div>
                     </div>
-                    <p class="mb-4">Come visit us or schedule a pickup, and experience why so many trust Abhushan Into Cash for their gold.</p>
+                    <p class="mb-4">
+                        Come visit us or schedule a pickup, and experience why so many trust Abhushan Into Cash
+                        for their gold.
+                    </p>
                     <div class="border-top mt-4 pt-4">
                         <div class="d-flex align-items-center">
-                            <img class="flex-shrink-0 rounded-circle me-3" src="{{ asset('website/img/profile.jpg') }}" alt="" />
-                            <h5 class="mb-0">Call Us: +012 345 6789</h5>
+                            <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="" />
+                            <h5 class="mb-0">Call Us: +91 97979 79812</h5>
                         </div>
                     </div>
                 </div>

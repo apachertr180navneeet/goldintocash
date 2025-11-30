@@ -22,39 +22,39 @@
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="position-relative overflow-hidden rounded ps-5 pt-5 h-100" style="min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="{{ asset('website/img/about.jpg') }}" alt="" style="object-fit: cover;" />
-                    <div class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3" style="width: 200px; height: 200px;">
-                        <div class="d-flex flex-column justify-content-center text-center bg-primary rounded h-100 p-3">
-                            <h1 class="text-white mb-0">25</h1>
-                            <h2 class="text-white">Years</h2>
-                            <h5 class="text-white mb-0">Experience</h5>
+                    <img class="position-absolute w-100 h-100" src="{{ asset('website/img/gold.avif') }}" alt="" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3" style="width: 150px; height: 150px;">
+                        <div class="bg-gold d-flex flex-column justify-content-center text-center bg-primary rounded h-100 p-3">
+                            <h1 class="text-dark mb-0">15</h1>
+                            <h2 class="text-dark">Years</h2>
+                            <h5 class="text-dark mb-0">Experience</h5>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="h-100">
-                    <h1 class="display-6 mb-5">We're Here To Assist You With Exploring Protection</h1>
-                    <p class="fs-5 text-primary mb-4">Aliqu diam amet diam et eos. Clita erat ipsum et lorem sed stet lorem sit clita duo justo erat amet</p>
+                    <h1 class="display-6 mb-5">Your Trusted Partner for Gold Selling & Girvi Gold Release</h1>
+                    <p class="fs-5 text-primary mb-4">At Abhushan Into Cash, we believe that gold is more than just a metal — it carries memories, emotions, and value. Whether your gold is girvi in a bank, resting unused at home, or you simply want to turn it into instant cash, we're here to make the entire process simple, transparent, and stress-free.</p>
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-04-primary.png') }}" alt="" />
-                                <h5 class="mb-0">Flexible Insurance Plans</h5>
+                                <img class="flex-shrink-0 me-3" src="img/icon/icon-04-primary.png" alt="">
+                                <h5 class="mb-0">Trusted & Transparent</h5>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-03-primary.png') }}" alt="" />
-                                <h5 class="mb-0">Money Back Guarantee</h5>
+                                <img class="flex-shrink-0 me-3" src="img/icon/icon-03-primary.png" alt="">
+                                <h5 class="mb-0">Fast & Hassle-Free</h5>
                             </div>
                         </div>
                     </div>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                    <p class="mb-4">For 15+ years, we've been helping families, individuals, and businesses get the best value for their gold with complete honesty and trust.</p>
                     <div class="border-top mt-4 pt-4">
                         <div class="d-flex align-items-center">
-                            <img class="flex-shrink-0 rounded-circle me-3" src="{{ asset('website/img/profile.jpg') }}" alt="" />
-                            <h5 class="mb-0">Call Us: +012 345 6789</h5>
+                            <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="" >
+                            <h5 class="mb-0">Call Us: +91 97979 79812</h5>
                         </div>
                     </div>
                 </div>
@@ -64,43 +64,53 @@
 </div>
 <!-- About End -->
 
-<!-- Facts Start -->
-<div class="container-fluid overflow-hidden my-5 px-lg-0">
-    <div class="container facts px-lg-0">
-        <div class="row g-0 mx-lg-0">
-            <div class="col-lg-6 facts-text wow fadeIn" data-wow-delay="0.1s">
-                <div class="h-100 px-4 ps-lg-0">
-                    <h1 class="text-white mb-4">For Individuals And Organisations</h1>
-                    <p class="text-light mb-5">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                    <a href="" class="align-self-start btn btn-secondary py-3 px-5">More Details</a>
-                </div>
-            </div>
-            <div class="col-lg-6 facts-counter wow fadeIn" data-wow-delay="0.5s">
-                <div class="h-100 px-4 pe-lg-0">
-                    <div class="row g-5">
-                        <div class="col-sm-6">
-                            <h1 class="display-5" data-toggle="counter-up">1234</h1>
-                            <p class="fs-5 text-primary">Happy Clients</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h1 class="display-5" data-toggle="counter-up">1234</h1>
-                            <p class="fs-5 text-primary">Projects Succeed</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h1 class="display-5" data-toggle="counter-up">1234</h1>
-                            <p class="fs-5 text-primary">Awards Achieved</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h1 class="display-5" data-toggle="counter-up">1234</h1>
-                            <p class="fs-5 text-primary">Team Members</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="mission-section" style="background-image: url({{ asset('website/img/bgcontact.jpg') }});" >
+  <div class="mission-content">
+    <h3 class="section-title">
+      What <span> We Do</span>
+    </h3>
+
+    <p class="mission-subtext">
+      We help you sell your gold at the best market value and provide complete assistance in releasing girvi gold from banks with a fast, transparent, and hassle-free process.
+    </p>
+
+    <div class="mission-grid">
+      <!-- Box 1 -->
+      <div class="mission-box">
+        <i class="fas fa-allergies"></i>
+        <h4>Gold Selling Services</h4>
+        <p>
+         We offer real-time market prices, instant evaluation, and same-day cash or bank transfer. Our process is designed to be fair, fast, and completely transparent.
+        </p>
+      </div>
+
+      <!-- Box 2 -->
+      <div class="mission-box">
+        <i class="fas fa-people-carry"></i>
+        <h4>Bank Me Girvi Sona Release Assistance</h4>
+        <p>
+            If your gold is pledged/girvi in a bank or finance company, we help you:
+
+            <ul>
+                <li>Check settlement/closure amount</li>
+                <li>Clear the loan</li>
+                <li>Release the gold</li>
+                <li>And offer the best rate if you wish to sell</li>
+            </ul>
+            Hum aapka girvi sona tension-free way me chudwate hain.
+          
+        </p>
+        
+      </div>
+
     </div>
-</div>
-<!-- Facts End -->
+  </div>
+
+  <div class="mission-image">
+    <img src="{{ asset('website/img/aboutus.jpg') }}" 
+         alt="Attica Gold Image">
+  </div>
+</section>
 
 <!-- Team Start -->
 <div class="container-xxl py-5">
