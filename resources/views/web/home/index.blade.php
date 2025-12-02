@@ -306,7 +306,7 @@
                 <div class="service-item rounded h-100 p-3">
                     <div class="d-flex align-items-center mb-4">
                         <div class="service-icon flex-shrink-0 bg-gold2 rounded me-4">
-                            <img class="img-fluid" src="img/icon/icon-10-light.png" alt="" />
+                            <img class="img-fluid" src="{{ asset('website/img/icon/icon-10-light.png') }}" alt="" />
                         </div>
                         <h4 class="mb-0">Cash Against Gold</h4>
                     </div>
@@ -317,7 +317,7 @@
                 <div class="service-item rounded h-100 p-3">
                     <div class="d-flex align-items-center mb-4">
                         <div class="service-icon flex-shrink-0 bg-gold2 rounded me-4">
-                            <img class="img-fluid" src="img/icon/icon-01-light.png" alt="" />
+                            <img class="img-fluid" src="{{ asset('website/img/icon/icon-01-light.png') }}" alt="" />
                         </div>
                         <h4 class="mb-0">Cash for Silver</h4>
                     </div>
@@ -328,7 +328,7 @@
                 <div class="service-item rounded h-100 p-3">
                     <div class="d-flex align-items-center mb-4">
                         <div class="service-icon flex-shrink-0 bg-gold2 rounded me-4">
-                            <img class="img-fluid" src="img/icon/icon-05-light.png" alt="" />
+                            <img class="img-fluid" src="{{ asset('website/img/icon/icon-05-light.png') }}" alt="" />
                         </div>
                         <h4 class="mb-0">Cash for Diamonds</h4>
                     </div>
@@ -339,7 +339,7 @@
                 <div class="service-item rounded h-100 p-3">
                     <div class="d-flex align-items-center mb-4">
                         <div class="service-icon flex-shrink-0 bg-gold2 rounded me-4">
-                            <img class="img-fluid" src="img/icon/icon-08-light.png" alt="" />
+                            <img class="img-fluid" src="{{ asset('website/img/icon/icon-08-light.png') }}" alt="" />
                         </div>
                         <h4 class="mb-0">Cash for Gold & Silver Coins</h4>
                     </div>
