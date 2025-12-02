@@ -39,13 +39,13 @@
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img class="flex-shrink-0 me-3" src="img/icon/icon-04-primary.png" alt="">
+                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-04-primary.png') }}" alt="">
                                 <h5 class="mb-0">Trusted & Transparent</h5>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img class="flex-shrink-0 me-3" src="img/icon/icon-03-primary.png" alt="">
+                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-03-primary.png') }}" alt="">
                                 <h5 class="mb-0">Fast & Hassle-Free</h5>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                     <p class="mb-4">For 15+ years, we've been helping families, individuals, and businesses get the best value for their gold with complete honesty and trust.</p>
                     <div class="border-top mt-4 pt-4">
                         <div class="d-flex align-items-center">
-                            <img class="flex-shrink-0 rounded-circle me-3" src="img/profile.jpg" alt="" >
+                            <img class="flex-shrink-0 rounded-circle me-3" src="{{ asset('website/img/profile.jpg') }}" alt="" >
                             <h5 class="mb-0">Call Us: +91 97979 79812</h5>
                         </div>
                     </div>
