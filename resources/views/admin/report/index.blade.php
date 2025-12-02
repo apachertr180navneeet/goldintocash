@@ -152,7 +152,7 @@ $(document).ready(function(){
                         statusBtn = `<button class="btn btn-sm btn-warning" onclick="updateReportStatus(${data.id}, 'pending')">Mark Pending</button>`;
                     }
                     return `${statusBtn} 
-                            <button class="btn btn-sm btn-warning" onclick="editReport(${data.id})">Edit</button>
+                            {{--  <button class="btn btn-sm btn-warning" onclick="editReport(${data.id})">Edit</button>  --}}
                             <button class="btn btn-sm btn-danger" onclick="deleteReport(${data.id})">Delete</button>`;
                 }
             }
