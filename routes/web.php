@@ -55,6 +55,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['admin'])->controller(AdminAuthController::class)->group(function () {
         Route::get('dashboard', 'adminDashboard')->name('dashboard');
 
+        Route::post('setting-update', 'settingUpdate')->name('setting.update');
+
         Route::get('change-password', 'changePassword')->name('change.password');
         Route::post('update-password', 'updatePassword')->name('update.password');
 

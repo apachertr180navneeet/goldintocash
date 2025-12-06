@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Models\{
+    User,
+    Branch,
+    BranchUser,
+    GoldLoan
+};
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Mail, DB, Hash, Validator, Session, File,Exception;
@@ -269,7 +274,44 @@ class AdminAuthController extends Controller
 
     public function adminDashboard()
     {
-        return view("admin.dashboard.index");
+        $setting = DB::table('setting')->where('id', 1)->first();
+
+        // Count active branches
+        $active_branch_count = Branch::where('status', 'active')->count();
+
+        // Branch Users Count
+        $active_branch_user_count = BranchUser::where('status', 'active')->count();
+        $inactive_branch_user_count = BranchUser::where('status', 'inactive')->count();
+
+        // Gold Loan Counts
+        $goldloancount = GoldLoan::count();                             // total
+        $approved_goldloan = GoldLoan::where('status', 'approved')->count(); // approved count
+        $pending_goldloan = GoldLoan::where('status', 'pending')->count();   // pending count
+
+        return view("admin.dashboard.index", compact(
+            'setting',
+            'active_branch_count',
+            'active_branch_user_count',
+            'inactive_branch_user_count',
+            'goldloancount',
+            'approved_goldloan',
+            'pending_goldloan'
+        ));
+    }
+
+
+    public function settingUpdate(Request $request)
+    {
+        $request->validate([
+            'whatsapp_auth_key' => 'required|string|max:255',
+        ]);
+
+        DB::table('setting')->updateOrInsert(
+            ['id' => 1], // assuming single settings row
+            ['whatsapp_auth_key' => $request->whatsapp_auth_key]
+        );
+
+        return back()->with('success', 'WhatsApp Auth Key Updated Successfully');
     }
 
 

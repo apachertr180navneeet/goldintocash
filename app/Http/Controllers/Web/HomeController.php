@@ -12,6 +12,8 @@ use App\Models\{
 };
 use Validator, Exception;
 
+use Illuminate\Support\Facades\DB;
+
 use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Mail;
@@ -173,6 +175,9 @@ class HomeController extends Controller
     {
         try {
 
+            $setting = DB::table('setting')->where('id', 1)->value('whatsapp_auth_key');
+
+
             // 1️⃣ Validate request data
             $request->validate([
                 'name'   => 'required|string|max:100',
@@ -192,7 +197,7 @@ class HomeController extends Controller
 
             // 3️⃣ Send SMS using CURL
 
-            $authKey = "SYSPOLYSALES";  // your auth key
+            $authKey = $setting;  // your auth key
             $mobileNumber = "91{$request->phone}"; // single or comma separated
 
             $url = "https://wywspl.com/sendMessage.php";

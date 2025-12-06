@@ -34,7 +34,7 @@
             <div class="card fixed-card">
                 <div class="card-body">
                     <h5 class="card-title">Branch Management</h5>
-                    <p class="card-text">Total: 10</p>
+                    <p class="card-text">Total: {{ $active_branch_count }}</p>
                 </div>
             </div>
         </div>
@@ -44,8 +44,8 @@
             <div class="card fixed-card">
                 <div class="card-body">
                     <h5 class="card-title">Branch User</h5>
-                    <p class="card-text">Active: 60</p>
-                    <p class="card-text">In-Active: 40</p>
+                    <p class="card-text">Active: {{ $active_branch_user_count }}</p>
+                    <p class="card-text">In-Active: {{ $inactive_branch_user_count }}</p>
                 </div>
             </div>
         </div>
@@ -55,8 +55,8 @@
             <div class="card fixed-card">
                 <div class="card-body">
                     <h5 class="card-title">Total Loan</h5>
-                    <p class="card-text">Total Pending Application: 20</p>
-                    <p class="card-text">Total Application Completed: 50</p>
+                    <p class="card-text">Total Pending Application: {{ $pending_goldloan }}</p>
+                    <p class="card-text">Total Application Completed: {{ $approved_goldloan }}</p>
                 </div>
             </div>
         </div>
@@ -66,7 +66,38 @@
             <div class="card fixed-card">
                 <div class="card-body">
                     <h5 class="card-title">Application Management</h5>
-                    <p class="card-text">Total: 50</p>
+                    <p class="card-text">Total: {{ $goldloancount }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- WhatsApp Auth Key Setting -->
+    <div class="row g-3 mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>WhatsApp API Setting</h5>
+                </div>
+
+                <div class="card-body">
+                    <form action="{{ route('admin.setting.update') }}" method="POST">
+                        @csrf
+
+                        <div class="mb-3">
+                            <label class="form-label">WhatsApp Auth Key</label>
+                            <input type="text" 
+                                name="whatsapp_auth_key" 
+                                class="form-control @error('whatsapp_auth_key') is-invalid @enderror"
+                                value="{{ old('whatsapp_auth_key', $setting->whatsapp_auth_key ?? '') }}"
+                                placeholder="Enter WhatsApp Auth Key">
+
+                            @error('whatsapp_auth_key')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save Key</button>
+                    </form>
                 </div>
             </div>
         </div>
