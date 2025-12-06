@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Report;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 
 class ReportController extends Controller
@@ -226,5 +227,27 @@ class ReportController extends Controller
             'cash_payment'        => 'nullable|numeric',
             'online_payment'      => 'nullable|numeric',
         ];
+    }
+
+    /**
+     * Generate PDF for a single report.
+     * URL: /admin/report/pdf/{id}
+     * Name: admin.report.pdf
+     */
+    public function pdf($id)
+    {
+        // 1️⃣ Get report or 404
+        $report = Report::findOrFail($id);
+
+        // 2️⃣ Load the Blade view and generate PDF
+        // Passing as array: key 'data' → value $report
+        $pdf = Pdf::loadView('admin.report.pdf', [
+                'data' => $report,
+            ])
+            ->setPaper('a4', 'portrait');
+
+        // 3️⃣ Return raw PDF so AJAX (blob) can handle it
+        return response($pdf->output(), 200)
+            ->header('Content-Type', 'application/pdf');
     }
 }

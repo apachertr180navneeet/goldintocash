@@ -73,6 +73,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::delete('delete/{id}', [$controller, 'destroy'])->name('destroy');
                 Route::get('get/{id}', [$controller, 'get'])->name('get');
                 Route::post('update', [$controller, 'update'])->name('update');
+
+
+                /**  🔽 Add PDF Route ONLY for Report Controller  */
+                if($resource == 'report'){
+                    Route::get('pdf/{id}', [$controller, 'pdf'])->name('pdf'); 
+                    // URL = /report/pdf/{id}
+                    // route() = report.pdf
+                }
             });
         }
 

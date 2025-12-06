@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 
-@section('style')@endsection
+@section('style')
+@endsection
 
 @section('content')
 <div class="container-fluid flex-grow-1 container-p-y">
@@ -42,22 +43,40 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form id="addReportForm" enctype="multipart/form-data">@csrf
-                    @foreach(['date','application_no','name','address','phone','city','gold_net_weight','gold_loan_amount','silver_net_weight','silver_loan_amount','total_loan_amount','settelment_amount','cash_payment','online_payment'] as $field)
-                    <div class="mb-3">
-                        <label for="{{ $field }}">{{ ucwords(str_replace('_',' ',$field)) }}</label>
-                        <input type="text" name="{{ $field }}" id="{{ $field }}" class="form-control" />
-                        <small class="error-text text-danger"></small>
-                    </div>
+                <form id="addReportForm" enctype="multipart/form-data">
+                    @csrf
+                    @foreach([
+                        'date','application_no','name','address','phone','family_phone','bank_name','bank_account_number','id_proof',
+                        'city','gold_net_weight','gold_loan_amount','silver_net_weight','silver_loan_amount',
+                        'total_loan_amount','settelment_amount','cash_payment','online_payment'
+                    ] as $field)
+                        <div class="mb-3">
+                            <label for="{{ $field }}">{{ ucwords(str_replace('_',' ',$field)) }}</label>
+                            <input type="text" name="{{ $field }}" id="{{ $field }}" class="form-control" />
+                            <small class="error-text text-danger"></small>
+                        </div>
                     @endforeach
+
                     <div class="mb-3">
                         <label for="gold_image">Gold Image</label>
                         <input type="file" name="gold_image" id="gold_image" class="form-control" />
                         <small class="error-text text-danger"></small>
                     </div>
+
                     <div class="mb-3">
                         <label for="silver_image">Silver Image</label>
                         <input type="file" name="silver_image" id="silver_image" class="form-control" />
+                        <small class="error-text text-danger"></small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="payment_mode">Payment Mode</label>
+                        <select name="payment_mode" id="payment_mode" class="form-control">
+                            <option value="">Select Payment Mode</option>
+                            <option value="cash">Cash</option>
+                            <option value="online">Online</option>
+                            <option value="cash+online">Cash + Online</option>
+                        </select>
                         <small class="error-text text-danger"></small>
                     </div>
                 </form>
@@ -79,15 +98,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form id="editReportForm" enctype="multipart/form-data">@csrf
+                <form id="editReportForm" enctype="multipart/form-data">
+                    @csrf
                     <input type="hidden" id="id">
-                    @foreach(['date','application_no','name','address','phone','city','gold_net_weight','gold_loan_amount','silver_net_weight','silver_loan_amount','total_loan_amount','settelment_amount','cash_payment','online_payment'] as $field)
-                    <div class="mb-3">
-                        <label for="edit{{ $field }}">{{ ucwords(str_replace('_',' ',$field)) }}</label>
-                        <input type="text" id="edit{{ $field }}" name="{{ $field }}" class="form-control" />
-                        <small class="error-text text-danger"></small>
-                    </div>
+                    @foreach([
+                        'date','application_no','name','address','phone','city',
+                        'gold_net_weight','gold_loan_amount','silver_net_weight','silver_loan_amount',
+                        'total_loan_amount','settelment_amount','cash_payment','online_payment'
+                    ] as $field)
+                        <div class="mb-3">
+                            <label for="edit{{ $field }}">{{ ucwords(str_replace('_',' ',$field)) }}</label>
+                            <input type="text" id="edit{{ $field }}" name="{{ $field }}" class="form-control" />
+                            <small class="error-text text-danger"></small>
+                        </div>
                     @endforeach
+
                     <div class="mb-3">
                         <label for="editgold_image">Gold Image</label>
                         <input type="file" id="editgold_image" name="gold_image" class="form-control" />
@@ -147,13 +172,17 @@ $(document).ready(function(){
                     const status = (data.status || '').toLowerCase().trim();
                     let statusBtn = '';
                     if(status === 'pending'){
-                        statusBtn = `<button class="btn btn-sm btn-success" onclick="updateReportStatus(${data.id}, 'completed')">Mark Completed</button>`;
+                        statusBtn = `<button class="btn btn-sm btn-success me-1" onclick="updateReportStatus(${data.id}, 'completed')">Mark Completed</button>`;
                     } else if(status === 'completed'){
-                        statusBtn = `<button class="btn btn-sm btn-warning" onclick="updateReportStatus(${data.id}, 'pending')">Mark Pending</button>`;
+                        statusBtn = `<button class="btn btn-sm btn-warning me-1" onclick="updateReportStatus(${data.id}, 'pending')">Mark Pending</button>`;
                     }
-                    return `${statusBtn} 
-                            {{--  <button class="btn btn-sm btn-warning" onclick="editReport(${data.id})">Edit</button>  --}}
-                            <button class="btn btn-sm btn-danger" onclick="deleteReport(${data.id})">Delete</button>`;
+
+                    return `
+                        ${statusBtn}
+                        <button class="btn btn-sm btn-info me-1" onclick="generatePdf(${data.id})">PDF</button>
+                        {{-- <button class="btn btn-sm btn-warning me-1" onclick="editReport(${data.id})">Edit</button> --}}
+                        <button class="btn btn-sm btn-danger" onclick="deleteReport(${data.id})">Delete</button>
+                    `;
                 }
             }
         ]
@@ -191,7 +220,7 @@ $(document).ready(function(){
             $('#id').val(res.id);
 
             @foreach(['date','application_no','name','address','phone','city','gold_net_weight','gold_loan_amount','silver_net_weight','silver_loan_amount','total_loan_amount','settelment_amount','cash_payment','online_payment','status'] as $field)
-            $('#edit{{ $field }}').val(res.{{ $field }});
+                $('#edit{{ $field }}').val(res.{{ $field }});
             @endforeach
 
             // ✅ Gold image preview
@@ -242,10 +271,12 @@ $(document).ready(function(){
     window.deleteReport = function(id){
         if(confirm('Are you sure?')){
             $.ajax({
-                url: "{{ url('admin/report/destroy') }}/" + id,
+                url: "{{ url('admin/report/delete') }}/" + id,
                 type: 'DELETE',
                 data: {_token: "{{ csrf_token() }}"},
-                success: function(){ table.ajax.reload(); }
+                success: function(){
+                    table.ajax.reload();
+                }
             });
         }
     }
@@ -258,6 +289,32 @@ $(document).ready(function(){
                 table.ajax.reload();
             } else {
                 Toast.fire({icon: 'error', title: res.message});
+            }
+        });
+    }
+
+    // 8️⃣ Generate PDF via AJAX (blob)
+    window.generatePdf = function(id){
+        $.ajax({
+            url: "{{ url('admin/report/pdf') }}/" + id,   // /admin/report/pdf/{id}
+            type: 'GET',
+            xhrFields: {
+                responseType: 'blob' // get binary PDF
+            },
+            success: function(data){
+                const blob = new Blob([data], { type: 'application/pdf' });
+                const url = window.URL.createObjectURL(blob);
+
+                // Open in new tab
+                window.open(url, '_blank');
+
+                // Optional: auto revoke URL after some time
+                setTimeout(function(){
+                    window.URL.revokeObjectURL(url);
+                }, 30000);
+            },
+            error: function(xhr){
+                alert('Failed to generate PDF. Please try again.');
             }
         });
     }

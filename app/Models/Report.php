@@ -31,7 +31,12 @@ class Report extends Model
         'settelment_amount',
         'cash_payment',
         'online_payment',
-        'status'
+        'status',
+        'family_phone',
+        'bank_name',
+        'bank_account_number',
+        'id_proof',
+        'payment_mode',
     ];
 
     // Dates (for soft deletes)
