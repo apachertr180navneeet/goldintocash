@@ -32,6 +32,7 @@ Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 
 Route::post('/application-post', [HomeController::class, 'applicationPost'])->name('application.post');
 Route::post('/contact-post', [HomeController::class, 'contactPost'])->name('contact.post');
+Route::post('/quick-enquiry-post', [HomeController::class, 'quickEnquiryPost'])->name('quick.enquiry.post');
 
 
 // Admin routes

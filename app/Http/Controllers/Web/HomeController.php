@@ -168,4 +168,73 @@ class HomeController extends Controller
             return back()->with('error', 'Something went wrong: ' . $e->getMessage());
         }
     }
+
+    public function quickEnquiryPost(Request $request)
+    {
+        try {
+
+            // 1️⃣ Validate request data
+            $request->validate([
+                'name'   => 'required|string|max:100',
+                'phone'  => 'required|digits:10',
+                'city'   => 'required|string|max:100',
+                'gold_net_weight' => 'nullable',
+                'gold_loan_amount' => 'nullable',
+            ]);
+
+            // 2️⃣ Prepare SMS message
+            $message = "Quick Enquiry\n"
+                    . "Name: {$request->name}\n"
+                    . "Phone: {$request->phone}\n"
+                    . "City: {$request->city}\n"
+                    . "Gold Weight: {$request->gold_net_weight}g\n"
+                    . "Loan Amount: ₹{$request->gold_loan_amount}";
+
+            // 3️⃣ Send SMS using CURL
+
+            $authKey = "SYSPOLYSALES";  // your auth key
+            $mobileNumber = "91{$request->phone}"; // single or comma separated
+
+            $url = "https://wywspl.com/sendMessage.php";
+
+            $postData = [
+                'AUTH_KEY' => $authKey,
+                'phone' => $mobileNumber,
+                'message' => $message
+            ];
+
+            $ch = curl_init();
+
+            curl_setopt_array($ch, [
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS => $postData
+            ]);
+
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+            $output = curl_exec($ch);
+
+            if(curl_errno($ch)){
+                return back()->with('error', 'SMS sending failed: ' . curl_error($ch));
+            }
+
+            curl_close($ch);
+
+
+            // 4️⃣ Response Message
+            return back()->with('success', 'Your enquiry has been submitted & SMS sent successfully!');
+
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            return back()->with('error', 'Database error: ' . $e->getMessage());
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return back()->withErrors($e->validator)->withInput();
+        } catch (\Exception $e) {
+            return back()->with('error', 'Something went wrong: ' . $e->getMessage());
+        }
+    }
+
 }
