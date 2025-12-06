@@ -83,6 +83,16 @@
                         </div>
 
                         <div class="col-lg-6 mb-3">
+                            <label class="form-label"><i class="fa-solid fa-building-columns"></i>Bank Account Number</label>
+                            <input type="text" class="form-control" name="bank_account_number" placeholder="Enter bank account number" required />
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label"><i class="fa-solid fa-building-columns"></i>Aadhar Card Number</label>
+                            <input type="text" class="form-control" name="addhar_card_number" placeholder="Enter Aadhar card number" required />
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
                             <label class="form-label"><i class="bi bi-gem"></i>Gold Net Weight</label>
                             <input type="text" class="form-control" name="gold_net_weight" placeholder="e.g. 25.5" required />
                         </div>

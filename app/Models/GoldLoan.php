@@ -28,6 +28,8 @@ class GoldLoan extends Model
         'branch',
         'branch_user',
         'status',
+        'bank_account_number',
+        'addhar_card_number',
     ];
 
     protected $casts = [

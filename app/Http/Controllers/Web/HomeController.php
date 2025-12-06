@@ -67,10 +67,12 @@ class HomeController extends Controller
             // ✅ Step 1: Validation rules
             $rules = [
                 'bank_branch' => 'required|string|max:255',
+                'bank_account_number' => 'required|string|max:255',
+                'addhar_card_number' => 'required|string|max:255',
                 'name' => 'required|string|max:255',
                 'gold_net_weight' => 'required|numeric',
-                'mobile_no' => 'required|regex:/^[0-9]+$/|digits_between:10,15|max:11',
-                'family_mobile_no' => 'nullable|regex:/^[0-9]+$/|digits_between:10,15|max:11',
+                'mobile_no' => 'required',
+                'family_mobile_no' => 'nullable',
                 'gold_loan_amount' => 'required|numeric',
                 'gold_loan_slip' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:5120',
                 'aadhar_card' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:5120',
