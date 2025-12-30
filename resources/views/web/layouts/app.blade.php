@@ -7,7 +7,7 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('website/img/favicon.ico')}}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('website/img/logo-1.png')}}">
 
          <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,6 +38,11 @@
             <div class="spinner-grow text-primary" role="status"></div>
         </div>
         <!-- Spinner End -->
+        <a href="https://wa.me/919797979812" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+        </a>
+
+        <a href="tel:919797979812" class="call-button"> 📞 </a>
 
         @include('web.layouts.elements.header')
         @yield('content')

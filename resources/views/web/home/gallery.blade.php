@@ -28,47 +28,50 @@
 <!-- Page Header End -->
 
 <section class="gallery-section my-5">
-  <div class="container">
-    <h2>Our Gallery</h2>
-    <p class="subtitle"></p>
+    <div class="container">
+        <h2>Our Gallery</h2>
+        <p class="subtitle"></p>
 
-    <div class="masonry">
-      <div class="masonry-item">
-        <img src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=800&q=60" alt="Gallery 1">
-        <div class="overlay"><i class="bi bi-eye-fill"></i></div>
-      </div>
-      <div class="masonry-item">
-        <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Gallery 2">
-        <div class="overlay"><i class="bi bi-eye-fill"></i></div>
-      </div>
-      <div class="masonry-item">
-        <img src="https://thumbs.dreamstime.com/b/black-young-fashion-model-woman-neon-light-portrait-beautiful-model-fluorescent-make-up-art-design-female-posing-240354611.jpg" alt="Gallery 3">
-        <div class="overlay"><i class="bi bi-eye-fill"></i></div>
-      </div>
-      <div class="masonry-item">
-        <img src="https://thumbs.dreamstime.com/b/beautiful-young-girl-25389275.jpg" alt="Gallery 4">
-        <div class="overlay"><i class="bi bi-eye-fill"></i></div>
-      </div>
-      <div class="masonry-item">
-        <img src="https://media.istockphoto.com/id/814423752/photo/eye-of-model-with-colorful-art-make-up-close-up.jpg?s=612x612&w=0&k=20&c=l15OdMWjgCKycMMShP8UK94ELVlEGvt7GmB_esHWPYE=" alt="Gallery 5">
-        <div class="overlay"><i class="bi bi-eye-fill"></i></div>
-      </div>
-      <div class="masonry-item">
-        <img src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=800&q=60" alt="Gallery 1">
-        <div class="overlay"><i class="bi bi-eye-fill"></i></div>
-      </div>
-      <div class="masonry-item">
-        <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Gallery 2">
-        <div class="overlay"><i class="bi bi-eye-fill"></i></div>
-      </div>
+        <div class="gallery">
+            <img src="{{ asset('website/img/gallery1.jpg') }}" alt="Image 1" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery2.jpg') }}" alt="Image 2" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery3.jpg') }}" alt="Image 3" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery4.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery5.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery6.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery7.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery8.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery9.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery10.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery11.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery12.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery13.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery14.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery15.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery16.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery17.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery18.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery19.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery20.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery21.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery22.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery23.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery24.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery25.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery26.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery27.jpg') }}" alt="Image 4" class="gallery-img" />
+            <img src="{{ asset('website/img/gallery28.jpg') }}" alt="Image 4" class="gallery-img" />
+            <!-- Add more images as needed -->
+        </div>
+
+        <!-- Lightbox overlay -->
+        <div id="lightbox" class="lightbox">
+            <span class="close">&times;</span>
+            <img class="lightbox-img" src="" />
+        </div>
     </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <img id="lightbox-img" src="" alt="Zoomed Image">
-  </div>
 </section>
+
 @endsection 
 
 @section('script')
