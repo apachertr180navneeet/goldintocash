@@ -10,7 +10,7 @@
 
                 <small class="fa fa-phone-alt me-2"></small>
 
-                <small>+91 97979 79812</small>
+                <a href="tel:919797979812" class="text-dark"><small>+91 9797979812</small></a>
 
             </div>
 
@@ -18,7 +18,7 @@
 
                 <small class="far fa-envelope-open me-2"></small>
 
-                <small>manishsoni5500@gmail.com</small>
+                <a href="mailto:manishsoni5500@gmail.com" class="text-dark"><small>manishsoni5500@gmail.com</small></a>
 
             </div>
 

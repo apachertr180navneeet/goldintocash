@@ -14,13 +14,10 @@
                             <div class="col-12 col-lg-6"></div>
 
                             <div class="col-12 col-lg-6">
-                                <h1 class="display-3 text-light mb-4 animated slideInDown">
-                                    Turn Your Gold Into Instant Cash!
+                                <h1 class="display-3 text-light mb-2 animated slideInDown">
+                                    बैंक से अपना गिरवी सोना छुड़वाएं और पाएं उसका सर्वोत्तम मूल्य
                                 </h1>
-
-                                <p class="fs-5 text-light mb-5">
-                                    Sell your gold at the best market price with quick, hassle-free payouts.
-                                </p>
+                                <!-- <p class="fs-5 text-light mb-2">We help you clear the loan, release your gold, and give you the best value instantly.</p> -->
 
                                 <a href="{{ route('contact') }}" class="btn btn-primary py-3 px-5">Get Cash Now</a>
                             </div>
@@ -254,20 +251,18 @@
     </div>
 </div>
 
-<div class="container-fluid m-0 p-0">
+<div class="container-fluid m-0 p-0" style="overflow: hidden">
     <div class="row d-flex align-items-center my-5">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <img src="{{ asset('website/img/image2.png') }}" alt="" class="img-fluid" />
         </div>
-
-        <div class="col-lg-4">
-             <h1 class="display-6 text-center py-3">
+        <div class="col-lg-6">
+            <h1 class="display-6 text-center py-3">
                 <span style="color: #ffbf16">Sona Do, Paisa Lo! </span><br />
                 Sirf Abhushan Into Cash <br />Ke Sath
             </h1>
         </div>
-
-        <div class="col-lg-4 d-flex justify-content-end">
+        <div class="col-lg-3 d-flex justify-content-end">
             <img src="{{ asset('website/img/image3.png') }}" alt="" class="img-fluid" />
         </div>
     </div>
@@ -686,8 +681,7 @@
 </div>
 
 <!-- Testimonial End -->
-
- <div class="container-xxl py-5">
+<div class="container-xxl py-5">
     <div class="container-fluid">
         <div class="text-center mx-auto" style="max-width: 500px">
             <h1 class="display-6 mb-5">Customer Gold Release With Photos</h1>
@@ -707,6 +701,16 @@
                     <div class="slide1"><img src="{{ asset('website/img/gallery8.jpg') }}" alt="" /></div>
                     <div class="slide1"><img src="{{ asset('website/img/gallery9.jpg') }}" alt="" /></div>
                     <div class="slide1"><img src="{{ asset('website/img/gallery10.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery6.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery7.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery8.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery9.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery10.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery6.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery7.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery8.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery9.jpg') }}" alt="" /></div>
+                    <div class="slide1"><img src="{{ asset('website/img/gallery10.jpg') }}" alt="" /></div>
                 </div>
 
                 <button class="nav next">&#10095;</button>
@@ -716,94 +720,94 @@
 </div>
 
 <div
-            class="container-xxl pt-5"
-            style="
-                background: radial-gradient(1200px 600px at 10% 20%, rgba(255, 248, 230, 0.9), transparent 20%),
-                    linear-gradient(180deg, #fff7e3 0%, #f7e2a8 30%, #eecf6e 60%, #d6a93d 100%);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0px;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            "
-        >
-            <div class="container">
-                <div class="row banner d-flex align-items-center">
-                    <div class="col-lg-6 left">
-                        <div class="character-wrap">
-                            <!-- Replace assets/character.png with your high-res character (transparent PNG or JPG). -->
-                            <div class="character">
-                                <img src="{{ asset('website/img/gold-women1.png') }}" alt="character placeholder" />
-                            </div>
-                            <div class="particles" aria-hidden="true">
-                                <!-- decorative gold glows -->
-                                <span
-                                    class="particle"
-                                    style="
-                                        width: 26px;
-                                        height: 26px;
-                                        background: rgba(255, 247, 200, 0.95);
-                                        left: 10%;
-                                        top: 12%;
-                                        transform: translate(-50%, -50%);
-                                        filter: blur(6px);
-                                    "
-                                ></span>
-                                <span
-                                    class="particle"
-                                    style="
-                                        width: 50px;
-                                        height: 50px;
-                                        background: rgba(255, 230, 160, 0.95);
-                                        left: 32%;
-                                        top: 70%;
-                                        transform: translate(-50%, -50%);
-                                        filter: blur(16px);
-                                    "
-                                ></span>
-                                <span
-                                    class="particle"
-                                    style="
-                                        width: 18px;
-                                        height: 18px;
-                                        background: rgba(255, 245, 200, 0.9);
-                                        left: 78%;
-                                        top: 40%;
-                                        transform: translate(-50%, -50%);
-                                        filter: blur(8px);
-                                    "
-                                ></span>
-                            </div>
-                        </div>
+    class="container-xxl pt-5"
+    style="
+        background: radial-gradient(1200px 600px at 10% 20%, rgba(255, 248, 230, 0.9), transparent 20%),
+            linear-gradient(180deg, #fff7e3 0%, #f7e2a8 30%, #eecf6e 60%, #d6a93d 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    "
+>
+    <div class="container">
+        <div class="row banner d-flex align-items-center">
+            <div class="col-lg-6 left">
+                <div class="character-wrap">
+                    <!-- Replace assets/character.png with your high-res character (transparent PNG or JPG). -->
+                    <div class="character">
+                        <img src="{{ asset('website/img/gold-women1.png') }}" alt="character placeholder" />
                     </div>
-
-                    <div class="col-lg-6 card" role="region" aria-label="Gold to Cash">
-                        <div class="badge">
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M12 2C13 2 14 2.5 14.6 3.4C15.2 4.3 16 6 16 7.5C16 9 14.5 10 13 10H11C9.5 10 8 9 8 7.5C8 6 8.8 4.3 9.4 3.4C10 2.5 11 2 12 2Z"
-                                    fill="#f3c66a"
-                                />
-                            </svg>
-                            Abhushan Into Cash
-                        </div>
-
-                        <h1 class="headline">अभी तक सोच ही रहे हो?</h1>
-
-                        <p class="sub">टेंशन मत लो — सोना आपका है, <br />हम बस उसे वापस दिलाने में मदद करते हैं।</p>
-
-                        <a class="cta" href="{{ route('application') }}">Get Instant Cash</a>
+                    <div class="particles" aria-hidden="true">
+                        <!-- decorative gold glows -->
+                        <span
+                            class="particle"
+                            style="
+                                width: 26px;
+                                height: 26px;
+                                background: rgba(255, 247, 200, 0.95);
+                                left: 10%;
+                                top: 12%;
+                                transform: translate(-50%, -50%);
+                                filter: blur(6px);
+                            "
+                        ></span>
+                        <span
+                            class="particle"
+                            style="
+                                width: 50px;
+                                height: 50px;
+                                background: rgba(255, 230, 160, 0.95);
+                                left: 32%;
+                                top: 70%;
+                                transform: translate(-50%, -50%);
+                                filter: blur(16px);
+                            "
+                        ></span>
+                        <span
+                            class="particle"
+                            style="
+                                width: 18px;
+                                height: 18px;
+                                background: rgba(255, 245, 200, 0.9);
+                                left: 78%;
+                                top: 40%;
+                                transform: translate(-50%, -50%);
+                                filter: blur(8px);
+                            "
+                        ></span>
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-6 card" role="region" aria-label="Gold to Cash">
+                <div class="badge">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M12 2C13 2 14 2.5 14.6 3.4C15.2 4.3 16 6 16 7.5C16 9 14.5 10 13 10H11C9.5 10 8 9 8 7.5C8 6 8.8 4.3 9.4 3.4C10 2.5 11 2 12 2Z"
+                            fill="#f3c66a"
+                        />
+                    </svg>
+                    Abhushan Into Cash
+                </div>
+
+                <h1 class="headline">अभी तक सोच ही रहे हो?</h1>
+
+                <p class="sub">टेंशन मत लो — सोना आपका है, <br />हम बस उसे वापस दिलाने में मदद करते हैं।</p>
+
+                <a class="cta" href="{{ route('application') }}">Get Instant Cash</a>
+            </div>
         </div>
+    </div>
+</div>
 
 @endsection 
 @section('script') 

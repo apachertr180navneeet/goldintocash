@@ -52,61 +52,6 @@
 
         {{--  Script for Carousel and Lightbox  --}}
         <script>
-            // Carousel Logic
-            const track = document.querySelector(".carousel-track");
-            const slides = Array.from(track.children);
-            const prevBtn = document.querySelector(".prev");
-            const nextBtn = document.querySelector(".next");
-            let index = 0;
-
-            function updateSlide() {
-                track.style.transform = `translateX(-${index * 100}%)`;
-            }
-
-            nextBtn.addEventListener("click", () => {
-                index = (index + 1) % slides.length;
-                updateSlide();
-            });
-
-            prevBtn.addEventListener("click", () => {
-                index = (index - 1 + slides.length) % slides.length;
-                updateSlide();
-            });
-
-            // Lightbox Logic
-            const images = document.querySelectorAll(".carousel-slide img");
-            const lightbox = document.getElementById("lightbox");
-            const lightboxImg = document.getElementById("lightbox-img");
-            const closeBtn = document.querySelector(".close");
-            const prevLightbox = document.querySelector(".prev-lightbox");
-            const nextLightbox = document.querySelector(".next-lightbox");
-
-            let currentImgIndex = 0;
-            const allImages = Array.from(images);
-
-            images.forEach((img, i) => {
-                img.addEventListener("click", () => {
-                    lightbox.style.display = "flex";
-                    lightboxImg.src = img.src;
-                    currentImgIndex = i;
-                });
-            });
-
-            closeBtn.addEventListener("click", () => {
-                lightbox.style.display = "none";
-            });
-
-            prevLightbox.addEventListener("click", () => {
-                currentImgIndex = (currentImgIndex - 1 + allImages.length) % allImages.length;
-                lightboxImg.src = allImages[currentImgIndex].src;
-            });
-
-            nextLightbox.addEventListener("click", () => {
-                currentImgIndex = (currentImgIndex + 1) % allImages.length;
-                lightboxImg.src = allImages[currentImgIndex].src;
-            });
-        </script>
-        <script>
             const counters = document.querySelectorAll(".count");
             const speed = 80;
 
@@ -142,6 +87,61 @@
         <script src="{{asset('website/lib/waypoints/waypoints.min.js')}}"></script>
         <script src="{{asset('website/lib/owlcarousel/owl.carousel.min.js')}}"></script>
         <script src="{{asset('website/lib/counterup/counterup.min.js')}}"></script>
+        
+        
+        <script>
+            const track = document.querySelector(".carousel-track");
+            const slides = document.querySelectorAll(".slide1");
+            const nextBtn = document.querySelector(".next");
+            const prevBtn = document.querySelector(".prev");
+
+            let index = 0;
+            let slidesToShow = 4;
+            const totalSlides = slides.length;
+
+            // Optional: change slidesToShow based on window width
+            function updateSlidesToShow() {
+                if (window.innerWidth < 768) {
+                    slidesToShow = 1; // mobile
+                } else {
+                    slidesToShow = 4; // desktop
+                }
+            }
+            window.addEventListener("resize", () => {
+                updateSlidesToShow();
+                updateSlide(); // recalc position on resize
+            });
+            updateSlidesToShow();
+
+            function updateSlide() {
+                const slideWidthPercent = 100 / slidesToShow;
+                track.style.transform = `translateX(-${index * slideWidthPercent}%)`;
+            }
+
+            nextBtn.addEventListener("click", () => {
+                if (index < totalSlides - slidesToShow) {
+                    index++;
+                } else {
+                    index = 0; // last ke baad first
+                }
+                updateSlide();
+            });
+
+            prevBtn.addEventListener("click", () => {
+                if (index > 0) {
+                    index--;
+                } else {
+                    index = totalSlides - slidesToShow; // first se last
+                }
+                updateSlide();
+            });
+
+            /* Auto slide optional */
+            setInterval(() => {
+                nextBtn.click();
+            }, 3000);
+        </script>
+        
         <!-- Template Javascript -->
         <script src="{{asset('website/js/main.js')}}"></script>
         @yield('script')
