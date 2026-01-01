@@ -193,7 +193,7 @@ h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
         position: relative;
         min-height: 150px;
     }
-        .display-3 {
+    .display-3 {
         font-size: 1rem !important;
     }
 
