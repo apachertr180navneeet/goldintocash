@@ -1,7 +1,6 @@
 @extends('web.layouts.app') @section('content')
 
-<!-- Carousel Start -->
-
+{{--  <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -62,103 +61,136 @@
         </button>
     </div>
 </div>
+<!-- Carousel End -->  --}}
 
+<!-- Carousel Start -->
+<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src="{{ asset('website/img/banner5.png') }}" alt="Image" />
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-5 col-lg-6"></div>
+                            <div class="col-7 col-lg-6">
+                                <h1 class="display-3 text-light mb-2 animated slideInDown">
+                                    बैंक से अपना गिरवी सोना छुड़वाएं और पाएं उसका सर्वोत्तम मूल्य
+                                </h1>
+                                <!-- <p class="fs-5 text-light mb-2">We help you clear the loan, release your gold, and give you the best value instantly.</p> -->
+                                <a href="contact.html" class="btn btn-primary py-3 px-5 mt-3">Get Cash Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="{{ asset('website/img/banner4.png') }}" alt="Image" />
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-8 col-lg-6">
+                                <h1 class="display-3 text-light mb-2 animated slideInDown">
+                                    Trusted, Transparent, and Hassle-Free
+                                </h1>
+                                <!-- <p class="fs-5 text-light mb-2">We offer 100% transparent gold evaluation with same-day cash settlements.</p> -->
+                                <a href="about.html" class="btn btn-primary py-3 px-5 mt-3">More Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#header-carousel"
+            data-bs-slide="prev"
+        >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#header-carousel"
+            data-bs-slide="next"
+        >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
 <!-- Carousel End -->
 
-<!-- About Start -->
-
-<div class="container-xxl py-5">
+ <!-- About Start -->
+<div class="container-xxl">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <!-- Mobile: Experience box on top -->
-
                 <div class="d-block d-lg-none d-md-none mb-3">
                     <div class="bg-white rounded p-3 text-center" style="width: 100%">
                         <div class="bg-gold rounded p-3">
                             <h1 class="text-dark mb-0">15</h1>
-
                             <h2 class="text-dark">Years</h2>
-
                             <h5 class="text-dark mb-0">Experience</h5>
                         </div>
                     </div>
                 </div>
-
-                <div class="position-relative overflow-hidden rounded ps-5 pt-5 h-100" style="min-height: 400px">
+                <div
+                    class="position-relative overflow-hidden rounded ps-5 pt-5 h-100 mb-5"
+                    style="min-height: 250px"
+                >
                     <img
-                        class="year position-absolute h-100 img-fluid"
+                        class="year position-absolute h-100 img-fluid pb-3"
                         src="{{ asset('website/img/lady1.jpg') }}"
                         alt=""
                         style="object-fit: cover"
                     />
-
                     <div
                         class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3 d-none d-lg-block d-md-block"
                         style="width: 150px; height: 150px"
                     >
-                        <div class="d-flex flex-column justify-content-center text-center bg-gold rounded h-100 p-3">
+                        <div
+                            class="d-flex flex-column justify-content-center text-center bg-gold rounded h-100 p-3"
+                        >
                             <h1 class="text-dark mb-0">15</h1>
-
                             <h2 class="text-dark">Years</h2>
-
                             <h5 class="text-dark mb-0">Experience</h5>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="h-85">
-                    <h1 class="display-6 mb-5">Your Trusted Partner for Turning Gold into Cash</h1>
-
+                    <h1 class="display-6 mt-5">Your Trusted Partner for Turning Gold into Cash</h1>
                     <p class="fs-5 text-primary mb-4">
-                        At Abhushan Into Cash, we believe selling your gold should be simple, fair, and worry-free.
-                        Whether it’s old jewelry, coins, or bars, our friendly team makes sure you get the best value,
-                        transparent evaluation, and instant cash—all with a smile.
+                        At Abhushan Into Cash, we believe selling your gold should be simple, fair, and
+                        worry-free. Whether it’s old jewelry, coins, or bars, our friendly team makes sure you
+                        get the best value, transparent evaluation, and instant cash—all with a smile.
                     </p>
-
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img
-                                    class="flex-shrink-0 me-3"
-                                    src="{{asset('website/img/icon/icon-04-primary.png')}}"
-                                    alt=""
-                                />
-
+                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-04-primary.png') }}" alt="" />
                                 <h5 class="mb-0">Trusted & Transparent</h5>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img
-                                    class="flex-shrink-0 me-3"
-                                    src="{{asset('website/img/icon/icon-03-primary.png')}}"
-                                    alt=""
-                                />
-
+                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-03-primary.png') }}" alt="" />
                                 <h5 class="mb-0">Fast & Hassle-Free</h5>
                             </div>
                         </div>
                     </div>
-
                     <p class="mb-4">
-                        Come visit us or schedule a pickup, and experience why so many trust Abhushan Into Cash for
-                        their gold.
+                        Come visit us or schedule a pickup, and experience why so many trust Abhushan Into Cash
+                        for their gold.
                     </p>
-
-                    <div class="border-top mt-4 pt-4">
+                    <div class="border-top my-4 pt-4">
                         <div class="d-flex align-items-center">
-                            {{--
-                            <img
-                                class="flex-shrink-0 rounded-circle me-3"
-                                src="{{asset('website/img/profile.jpg')}}"
-                                alt=""
-                            />
-                            --}}
-
+                            <!-- <img class="flex-shrink-0 rounded-circle me-3" src="{{ asset('website/img/profile.jpg') }}" alt=""> -->
                             <h5 class="mb-0">Call Us: +91 97979 79812</h5>
                         </div>
                     </div>
@@ -167,8 +199,8 @@
         </div>
     </div>
 </div>
-
 <!-- About End -->
+
 
 <section class="sell-steps stats-section">
     <h2>We Buy</h2>
