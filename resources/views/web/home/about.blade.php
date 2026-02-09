@@ -22,10 +22,10 @@
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="position-relative overflow-hidden rounded ps-5 pt-5 h-100" style="min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="{{ asset('website/img/gold.avif') }}" alt="" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="{{ asset('website/img/gold-1.png') }}" alt="" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3" style="width: 150px; height: 150px;">
                         <div class="bg-gold d-flex flex-column justify-content-center text-center bg-primary rounded h-100 p-3">
-                            <h1 class="text-dark mb-0">15</h1>
+                            <h1 class="text-dark mb-0">15+</h1>
                             <h2 class="text-dark">Years</h2>
                             <h5 class="text-dark mb-0">Experience</h5>
                         </div>

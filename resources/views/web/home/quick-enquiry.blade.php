@@ -66,36 +66,90 @@
                 <form action="{{ route('quick.enquiry.post') }}" method="post">
                     @csrf
                     <div class="row d-flex justify-content-center">
-                        <div class="col-lg-7 mb-3">
-                            <label class="form-label"><i class="bi bi-person-fill"></i>Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Name" required />
+                        <div class="col-lg-3 d-none d-sm-block quick-enquiry">
+                            <img src="{{ asset('website/img/gallery1.jpg') }}" alt="" class="img-fluid" />
+                            <img src="{{ asset('website/img/gallery1.jpg') }}" alt="" class="img-fluid" />
                         </div>
+                        <div class="col-lg-6">
+                            <div class="col-lg-12 mb-3">
+                                <label class="form-label"><i class="bi bi-person-fill"></i>Name / नाम </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="name"
+                                    id="name"
+                                    placeholder="Name"
+                                    required
+                                />
+                            </div>
 
-                        <div class="col-lg-7 mb-3">
-                            <label class="form-label"><i class="bi bi-telephone-fill"></i> Phone Number</label>
-                            <input type="tel" class="form-control" name="phone" placeholder="+91 98765 43210" required />
+                            <div class="col-lg-12 mb-3">
+                                <label class="form-label"
+                                    ><i class="bi bi-telephone-fill"></i> Phone Number / फोन नम्बर</label
+                                >
+                                <input
+                                    type="tel"
+                                    class="form-control"
+                                    name="phone"
+                                    id="phone"
+                                    placeholder="+91 98765 43210"
+                                    required
+                                />
+                            </div>
+
+                            <div class="col-lg-12 mb-3">
+                                <label class="form-label"><i class="bi bi-geo-alt-fill"></i>City / शहर </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="city"
+                                    id="city"
+                                    placeholder="Enter your city"
+                                    required
+                                />
+                            </div>
+
+                            <div class="col-lg-12 mb-3">
+                                <label class="form-label"
+                                    ><i class="bi bi-gem"></i>Gold Net Weight / सोने का नेट वजन
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="weight"
+                                    id="weight"
+                                    placeholder="e.g. 25.5"
+                                    required
+                                />
+                            </div>
+
+                            <div class="col-lg-12 mb-3">
+                                <label class="form-label"
+                                    ><i class="fa-solid fa-indian-rupee-sign"></i>Gold Loan Amount / सोने का लोन
+                                    मूल्य</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="amount"
+                                    id="amount"
+                                    placeholder="e.g. 75000"
+                                    required
+                                />
+                            </div>
+
+                            <div class="col-lg-12 mb-3">
+                                <label class="form-label"></label>
+                                <button type="submit" class="btn btn-submit w-100">Send Message</button>
+                            </div>
+
+                            <div id="successMsg" style="display: none; color: green; margin-top: 15px">
+                                ✅ Enquiry sent successfully!
+                            </div>
                         </div>
-
-                        <div class="col-lg-7 mb-3">
-                            <label class="form-label"><i class="bi bi-geo-alt-fill"></i>City</label>
-                            <input type="text" class="form-control" name="city" placeholder="Enter your city" required />
-                        </div>
-
-                        <div class="col-lg-7 mb-3">
-                            <label class="form-label"><i class="bi bi-gem"></i>Gold Net Weight</label>
-                            <input type="text" class="form-control" name="gold_net_weight" placeholder="e.g. 25.5" required />
-                        </div>
-
-                        <div class="col-lg-7 mb-3">
-                            <label class="form-label"
-                                ><i class="fa-solid fa-indian-rupee-sign"></i>Gold Loan Amount</label
-                            >
-                            <input type="text" class="form-control" name="gold_loan_amount" placeholder="e.g. 75000" required />
-                        </div>
-
-                        <div class="col-lg-7 mb-3">
-                            <label class="form-label"></label>
-                            <button type="submit" class="btn btn-submit w-100">Send Message</button>
+                        <div class="col-lg-3 d-none d-sm-block quick-enquiry">
+                            <img src="{{ asset('website/img/gallery5.jpg') }}" alt="" class="img-fluid" />
+                            <img src="{{ asset('website/img/gallery20.jpg') }}" alt="" class="img-fluid" />
                         </div>
                     </div>
                 </form>

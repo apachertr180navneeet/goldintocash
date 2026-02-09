@@ -64,4 +64,36 @@
     
 })(jQuery);
 
+document.getElementById("enquiryForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let formData = new FormData(this);
+
+  fetch("send.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(resp => {
+    if (resp.trim() === "success") {
+
+      document.getElementById("successMsg").style.display = "block";
+
+      let msg = `New Gold Loan Enquiry
+Name: ${name.value}
+Phone: ${phone.value}
+City: ${city.value}
+Gold Weight: ${weight.value} gm
+Loan Amount: ₹${amount.value}`;
+
+      window.open(
+        `https://wa.me/919797979812?text=${encodeURIComponent(msg)}`,
+        "_blank"
+      );
+
+    } else {
+      alert("Mail failed!");
+    }
+  });
+});
 

@@ -1,62 +1,32 @@
-<!-- Topbar Start -->
-
+ <!-- Topbar Start -->
 <div class="container-fluid bg-steps1 text-white-50 py-2 px-0 d-none d-lg-block">
-
     <div class="row gx-0 align-items-center text-dark">
-
         <div class="col-lg-7 px-5 text-start">
-
             <div class="h-100 d-inline-flex align-items-center me-4">
-
                 <small class="fa fa-phone-alt me-2"></small>
-
                 <a href="tel:919797979812" class="text-dark"><small>+91 9797979812</small></a>
-
             </div>
-
             <div class="h-100 d-inline-flex align-items-center me-4">
-
                 <small class="far fa-envelope-open me-2"></small>
-
-                <a href="mailto:manishsoni5500@gmail.com" class="text-dark"><small>manishsoni5500@gmail.com</small></a>
-
+                <a href="mailto:abhushanintocash@gmail.com" class="text-dark"><small>abhushanintocash@gmail.com</small></a>
             </div>
-
-            <div class="h-100 d-inline-flex align-items-center me-4">
+                <div class="h-100 d-inline-flex align-items-center me-4">
                 <small class="far fa-clock me-2"></small>
                 <small>10am - 9pm</small>
             </div>
-
-            {{--  <div class="h-100 d-inline-flex align-items-center me-4">
-
+            <!-- <div class="h-100 d-inline-flex align-items-center me-4">
                 <small class="far fa-clock me-2"></small>
-
                 <small>Mon - Fri : 09 AM - 09 PM</small>
-
-            </div>  --}}
-
+            </div> -->
         </div>
-
         <div class="col-lg-5 px-5 text-end">
-
             <div class="h-100 d-inline-flex align-items-center">
-
-                <a class="text-dark-50 ms-4" href=""><i class="fab fa-facebook-f"></i></a>
-
-                <a class="text-dark-50 ms-4" href=""><i class="fab fa-twitter"></i></a>
-
-                <a class="text-dark-50 ms-4" href=""><i class="fab fa-linkedin-in"></i></a>
-
-                <a class="text-dark-50 ms-4" href=""><i class="fab fa-instagram"></i></a>
-
+                <a class="text-dark-50 ms-4" href="https://www.facebook.com/profile.php?id=61582289245066"><i class="fab fa-facebook-f"></i></a>
+                <a class="text-dark-50 ms-4" href="https://www.instagram.com/abhushan_into_cash?igsh=MWVsNjVuMjh2dXkyaA=="><i class="fab fa-instagram"></i></a>
             </div>
-
         </div>
-
     </div>
-
 </div>
-
 <!-- Topbar End -->
 
 
@@ -70,6 +40,7 @@
     <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center">
 
         <img class="img-fluid me-3" src="{{ asset('website/img/logo-1.png') }}" alt="" />
+        <h6 class="">Abhushan Into Cash</h6>
 
     </a>
 

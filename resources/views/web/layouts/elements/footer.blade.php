@@ -11,15 +11,8 @@
                         <h1 class="text-white mb-4"><img class="img-fluid me-3 w-50" src="{{ asset('website/img/logo-1.png') }}" alt="" /></h1>
 
                         <div class="d-flex pt-2">
-
-                            <a class="btn btn-square me-1" href=""><i class="fab fa-twitter"></i></a>
-
-                            <a class="btn btn-square me-1" href=""><i class="fab fa-facebook-f"></i></a>
-
-                            <a class="btn btn-square me-1" href=""><i class="fab fa-youtube"></i></a>
-
-                            <a class="btn btn-square me-0" href=""><i class="fab fa-linkedin-in"></i></a>
-
+                            <a class="btn btn-square me-1" href="https://www.facebook.com/profile.php?id=61582289245066"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square me-0" href="https://www.instagram.com/abhushan_into_cash?igsh=MWVsNjVuMjh2dXkyaA=="><i class="fab fa-instagram"></i></a>
                         </div>
 
                     </div>
@@ -45,19 +38,13 @@
                         <h5 class="text-light mb-4">Address</h5>
 
                         <p>
-                            <i class="fa fa-map-marker-alt me-3"></i>रिलायंस स्मार्ट मार्ट के पास , एयरपोर्ट रोड, जोधपुर
-                            ( राजस्थान )
+                            <i class="fa fa-map-marker-alt me-3"></i>Near Reliance Smart Point, Airport Road, jodhpur
                         </p>
                         <p>
                             <i class="fa fa-phone-alt me-3"></i
                             ><a href="tel:919797979812" style="color: #a7a8b4"> +91 9797979812</a>
                         </p>
-                        <p>
-                            <i class="fa fa-envelope me-3"></i
-                            ><a href="mailto:manishsoni5500@gmail.com" style="color: #a7a8b4"
-                                >manishsoni5500@gmail.com</a
-                            >
-                        </p>
+                        <p><i class="fa fa-envelope me-1"></i><a href="mailto:abhushanintocash@gmail.com" style="color: #A7A8B4;">abhushanintocash@gmail.com</a></p>
 
                     </div>
 

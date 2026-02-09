@@ -53,11 +53,7 @@
 
             <h4>Address</h4>
 
-            <p>
-
-                रिलायंस स्मार्ट मार्ट के पास , एयरपोर्ट रोड, जोधपुर ( राजस्थान )
-
-            </p>
+            <p>Near Reliance Smart Point, <br>Airport Road, jodhpur</p>
 
         </div>
 
@@ -81,8 +77,8 @@
             </div>
             <h4>Email</h4>
             <p>
-                <a href="mailto:manishsoni5500@gmail.com" class="contact-link">
-                    manishsoni5500@gmail.com
+                <a href="mailto:abhushanintocash@gmail.com" class="contact-link">
+                    abhushanintocash@gmail.com
                 </a>
             </p>
         </div>

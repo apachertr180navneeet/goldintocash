@@ -67,34 +67,32 @@
 <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="w-100" src="{{ asset('website/img/banner5.png') }}" alt="Image" />
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-5 col-lg-6"></div>
-                            <div class="col-7 col-lg-6">
-                                <h1 class="display-3 text-light mb-2 animated slideInDown">
-                                    बैंक से अपना गिरवी सोना छुड़वाएं और पाएं उसका सर्वोत्तम मूल्य
-                                </h1>
-                                <!-- <p class="fs-5 text-light mb-2">We help you clear the loan, release your gold, and give you the best value instantly.</p> -->
-                                <a href="contact.html" class="btn btn-primary py-3 px-5 mt-3">Get Cash Now</a>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="{{ asset('website/img/banner5.png') }}" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-5 col-lg-6"></div>
+                                <div class="col-7 col-lg-6">
+                                    <h1 class="display-3 text-light mb-2 animated slideInDown text-outline">बैंक से अपना गिरवी सोना छुड़वाएं और पाएं उसका सर्वोत्तम मूल्य </h1>
+                                    <!-- <p class="fs-5 text-light mb-2">We help you clear the loan, release your gold, and give you the best value instantly.</p> -->
+                                    {{--  <a href="{{ route('contact') }}" class="btn btn-primary py-3 px-5 mt-3">Get Cash Now</a>  --}}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img class="w-100" src="{{ asset('website/img/banner4.png') }}" alt="Image" />
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-8 col-lg-6">
-                                <h1 class="display-3 text-light mb-2 animated slideInDown">
-                                    Trusted, Transparent, and Hassle-Free
-                                </h1>
-                                <!-- <p class="fs-5 text-light mb-2">We offer 100% transparent gold evaluation with same-day cash settlements.</p> -->
-                                <a href="about.html" class="btn btn-primary py-3 px-5 mt-3">More Details</a>
+                <div class="carousel-item">
+                    <img class="w-100" src="{{ asset('website/img/banner4.png') }}" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-8 col-lg-6">
+                                    <h1 class="display-3 text-light mb-2 animated slideInDown text-outline">Trusted, Transparent, and Hassle-Free</h1>
+                                    <!-- <p class="fs-5 text-light mb-2">We offer 100% transparent gold evaluation with same-day cash settlements.</p> -->
+                                    {{--  <a href="{{ route('about') }}" class="btn btn-primary py-3 px-5 mt-3">More Details</a>  --}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -130,10 +128,9 @@
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <!-- Mobile: Experience box on top -->
                 <div class="d-block d-lg-none d-md-none mb-3">
-                    <div class="bg-white rounded p-3 text-center" style="width: 100%">
+                    <div class="bg-white rounded p-3 text-center" style="width:100%;">
                         <div class="bg-gold rounded p-3">
-                            <h1 class="text-dark mb-0">15</h1>
-                            <h2 class="text-dark">Years</h2>
+                            <h1 class="text-dark mb-0">15+ Years</h1>
                             <h5 class="text-dark mb-0">Experience</h5>
                         </div>
                     </div>
@@ -155,7 +152,7 @@
                         <div
                             class="d-flex flex-column justify-content-center text-center bg-gold rounded h-100 p-3"
                         >
-                            <h1 class="text-dark mb-0">15</h1>
+                            <h1 class="text-dark mb-0">15+</h1>
                             <h2 class="text-dark">Years</h2>
                             <h5 class="text-dark mb-0">Experience</h5>
                         </div>
@@ -165,22 +162,18 @@
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="h-85">
                     <h1 class="display-6 mt-5">Your Trusted Partner for Turning Gold into Cash</h1>
-                    <p class="fs-5 text-primary mb-4">
-                        At Abhushan Into Cash, we believe selling your gold should be simple, fair, and
-                        worry-free. Whether it’s old jewelry, coins, or bars, our friendly team makes sure you
-                        get the best value, transparent evaluation, and instant cash—all with a smile.
-                    </p>
+                    <p class=" text-primary mb-4">At Abhushan Into Cash, we believe selling your gold should be simple, fair, and worry-free. Whether it’s old jewelry, coins, or bars, our friendly team makes sure you get the best value, transparent evaluation, and instant cash—all with a smile.</p>
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-04-primary.png') }}" alt="" />
-                                <h5 class="mb-0">Trusted & Transparent</h5>
+                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-04-primary.png') }}" alt="">
+                                <h6 class="mb-0">Trusted & Transparent</h6>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
-                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-03-primary.png') }}" alt="" />
-                                <h5 class="mb-0">Fast & Hassle-Free</h5>
+                                <img class="flex-shrink-0 me-3" src="{{ asset('website/img/icon/icon-03-primary.png') }}" alt="">
+                                <h6 class="mb-0">Fast & Hassle-Free</h6>
                             </div>
                         </div>
                     </div>
@@ -340,7 +333,7 @@
             </div>
 
             <div class="col-6 col-lg-3 mb-4">
-                <h1 class="stats-number counter" data-count="2500" data-plus="+">0</h1>
+                <h1 class="stats-number counter" data-count="25000" data-plus="+">0</h1>
                 <p class="stats-text">HAPPY CUSTOMERS</p>
             </div>
 
@@ -351,7 +344,7 @@
 
             <div class="col-6 col-lg-3 mb-4">
                 <h1 class="stats-number">
-                    <span class="counter" data-count="7" data-plus="+">0</span>
+                    <span class="counter" data-count="15" data-plus="+">0</span>
                 </h1>
                 <p class="stats-text">EXPERIENCE</p>
             </div>
