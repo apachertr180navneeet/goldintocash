@@ -28,6 +28,7 @@
 			['route' => 'admin.branch.index', 'text' => 'Branch'],
 			['route' => 'admin.branchUser.index', 'text' => 'Branch User'],
 			['route' => 'admin.report.index', 'text' => 'Reports'],
+			['route' => 'admin.quickEnquiry.index', 'text' => 'Quick Enquiries'],
 		] as $mastermenu)
 			<li class="menu-item {{ request()->routeIs($mastermenu['route']) ? 'active' : '' }}">
 				<a href="{{ route($mastermenu['route']) }}" class="menu-link">
