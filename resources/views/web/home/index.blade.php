@@ -834,10 +834,91 @@
     </div>
 </div>
 
+
+<!-- Quick Enquiry Modal -->
+<div class="modal fade" id="quickEnquiryModal" tabindex="-1" aria-labelledby="quickEnquiryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #ffbf16;">
+                <h5 class="modal-title" id="quickEnquiryModalLabel" style="color: #000; font-family: 'Tiro Devanagari Hindi', serif;">Quick Enquiry / त्वरित पूछताछ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body quick-enquiry Application-form">
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong>There were some problems with your input:</strong>
+                        <ul class="mb-0 mt-2">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('quick.enquiry.post') }}" method="post">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-person-fill"></i> Name / नाम </label>
+                        <input type="text" class="form-control" name="name" placeholder="Name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-telephone-fill"></i> Phone Number / फोन नम्बर</label>
+                        <input type="tel" class="form-control" name="phone" placeholder="+91 98765 43210" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-geo-alt-fill"></i> City / शहर </label>
+                        <input type="text" class="form-control" name="city" placeholder="Enter your city" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-gem"></i> Gold Net Weight / सोने का नेट वजन</label>
+                        <input type="text" class="form-control" name="gold_net_weight" placeholder="e.g. 25.5" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><i class="fa-solid fa-indian-rupee-sign"></i> Gold Loan Amount / सोने का लोन मूल्य</label>
+                        <input type="text" class="form-control" name="gold_loan_amount" placeholder="e.g. 75000" />
+                    </div>
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary w-100 py-2" style="background-color: #ffbf16; border-color: #ffbf16; color: #000; font-weight: bold;">Submit Enquiry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection 
 @section('script') 
      <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Check if there are session messages or errors (meaning the form was just submitted)
+            const hasMessages = {{ (session('success') || session('error') || $errors->any()) ? 'true' : 'false' }};
+            
+            // Check if modal was already shown in this session
+            const modalShown = sessionStorage.getItem('quickEnquiryModalShown');
+            
+            if (hasMessages || !modalShown) {
+                // Show the modal
+                var myModal = new bootstrap.Modal(document.getElementById('quickEnquiryModal'), {
+                    backdrop: 'static'
+                });
+                myModal.show();
+                
+                // Mark as shown so it doesn't pop up on every page refresh
+                sessionStorage.setItem('quickEnquiryModalShown', 'true');
+            }
+
             const counters = document.querySelectorAll(".counter");
             const speed = 200;
 
