@@ -89,7 +89,7 @@ $('#quickEnquiriesTable').DataTable({
         {
             data: "action",
             render: (data,type,row) => {
-                    return '<button type="button" class="btn btn-sm btn-danger" onclick="deletes('+row.id+')">Delete</button>';
+                    return '<button type="button" class="btn btn-sm btn-danger" onclick="deleteEnquiry('+row.id+')">Delete</button>';
             }
         }
         
@@ -98,7 +98,7 @@ $('#quickEnquiriesTable').DataTable({
 
 
 
-function deletes(userid){
+function deleteEnquiry(userid){
     Swal.fire({
         title: 'Are you sure?',
         text: "You want to delete this enquiry!",
@@ -114,6 +114,9 @@ function deletes(userid){
             $.ajax({
                 type: "DELETE",
                 url: url,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 data: {'_token': "{{ csrf_token() }}"},
                 success: function(response) {
                     if(response.success){
@@ -122,6 +125,9 @@ function deletes(userid){
                     }else{
                         setFlesh('error','There is some problem deleting this enquiry. Please try again.');
                     }
+                },
+                error: function(xhr, status, error) {
+                    setFlesh('error', 'Error: ' + error);
                 }
             });
         }
