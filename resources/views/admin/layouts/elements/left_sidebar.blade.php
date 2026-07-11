@@ -30,6 +30,9 @@
 			['route' => 'admin.report.index', 'text' => 'Reports'],
 			['route' => 'admin.quickEnquiry.index', 'text' => 'Quick Enquiries'],
 		] as $mastermenu)
+			@if(Auth::user()->role == 'user' && $mastermenu['text'] != 'Reports')
+				@continue
+			@endif
 			<li class="menu-item {{ request()->routeIs($mastermenu['route']) ? 'active' : '' }}">
 				<a href="{{ route($mastermenu['route']) }}" class="menu-link">
 					<i class="menu-icon tf-icons bx bx-group"></i>

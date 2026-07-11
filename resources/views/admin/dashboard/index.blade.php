@@ -18,6 +18,7 @@
 
 <!-- Content -->
 <div class="container-fluid flex-grow-1 container-p-y">
+    @if(Auth::user()->role == 'admin')
     <div class="row g-3">
         <!-- Customer Management -->
         <div class="col-md-4">
@@ -102,6 +103,14 @@
             </div>
         </div>
     </div>
+    @else
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Welcome to your Dashboard</h3>
+            <p>You can manage Reports from the sidebar.</p>
+        </div>
+    </div>
+    @endif
 </div>
 <!-- / Content -->
 

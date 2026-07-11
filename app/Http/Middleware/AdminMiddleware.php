@@ -18,7 +18,16 @@ class AdminMiddleware
     {
         if(Auth::user()) {
             $user = Auth::user();
-            if($user->role == "admin") {
+            if($user->role == "admin" || $user->role == "user") {
+                
+                // If user is just a 'user', restrict access to only Dashboard and Reports
+                if($user->role == 'user'){
+                    $allowedRoutes = ['admin.dashboard', 'admin.report.index', 'admin.report.getall', 'admin.report.store', 'admin.report.status', 'admin.report.destroy', 'admin.report.get', 'admin.report.update', 'admin.report.pdf', 'admin.logout', 'admin.profile', 'admin.update.profile', 'admin.change.password', 'admin.update.password'];
+                    if(!in_array($request->route()->getName(), $allowedRoutes)){
+                        return redirect()->route('admin.dashboard')->with('error', 'You do not have permission to access this page.');
+                    }
+                }
+
                 return $next($request);
             }else{
                 return redirect()->back();

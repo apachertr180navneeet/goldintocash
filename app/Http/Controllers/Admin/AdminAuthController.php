@@ -23,7 +23,7 @@ class AdminAuthController extends Controller
         try{
             if(Auth::user()) {
                 $user = Auth::user();
-                if($user->role == "admin") {
+                if($user->role == "admin" || $user->role == "user") {
                     return redirect()->route('admin.dashboard');
                 }else{
                     return back()->with("error","Opps! You do not have access this");
@@ -57,15 +57,13 @@ class AdminAuthController extends Controller
                 "email" => "required",
                 "password" => "required",
             ]);
-            $user = User::where('role','admin')->where('email',$request->email)->first();
+            $user = User::whereIn('role', ['admin', 'user'])->where('email',$request->email)->first();
             if($user){
                 $credentials = $request->only("email", "password");
                 if(Auth::attempt([
                         'email' => $request->email,
                         'password' => $request->password,
-                        'role' => function ($query) {
-                            $query->where('role','admin');
-                        }
+                        fn($query) => $query->whereIn('role', ['admin', 'user'])
                     ]))
                 {
                     return redirect()->route("admin.dashboard")->with("success", "Welcome to your dashboard.");

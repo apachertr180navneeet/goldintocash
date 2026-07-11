@@ -8,6 +8,7 @@ use App\Models\Report;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 use Exception;
 
 class ReportController extends Controller
@@ -19,7 +20,13 @@ class ReportController extends Controller
 
     public function getAll()
     {
-        $reports = Report::orderBy('id', 'desc')->get();
+        $query = Report::orderBy('id', 'desc');
+        
+        if (Auth::user() && Auth::user()->role == 'user') {
+            $query->where('created_at', '>=', now()->subHours(24));
+        }
+        
+        $reports = $query->get();
         return response()->json(['data' => $reports], 200);
     }
 
