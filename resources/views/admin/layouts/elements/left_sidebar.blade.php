@@ -31,7 +31,7 @@
 			['route' => 'admin.report.index', 'text' => 'Reports'],
 			['route' => 'admin.quickEnquiry.index', 'text' => 'Quick Enquiries'],
 		] as $mastermenu)
-			@if(Auth::user()->role == 'user' && $mastermenu['text'] != 'Reports')
+			@if(Auth::user()->role == 'user' && $mastermenu['text'] != 'Quick Enquiries')
 				@continue
 			@endif
 			<li class="menu-item {{ request()->routeIs($mastermenu['route']) ? 'active' : '' }}">

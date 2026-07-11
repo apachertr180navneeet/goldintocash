@@ -107,7 +107,7 @@
     <div class="row">
         <div class="col-md-12">
             <h3>Welcome to your Dashboard</h3>
-            <p>You can manage Reports from the sidebar.</p>
+            <p>You can manage Quick Enquiries from the sidebar.</p>
         </div>
     </div>
     @endif

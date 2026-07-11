@@ -20,9 +20,9 @@ class AdminMiddleware
             $user = Auth::user();
             if($user->role == "admin" || $user->role == "user") {
                 
-                // If user is just a 'user', restrict access to only Dashboard and Reports
+                // If user is just a 'user', restrict access to only Dashboard and Quick Enquiries
                 if($user->role == 'user'){
-                    $allowedRoutes = ['admin.dashboard', 'admin.report.index', 'admin.report.getall', 'admin.report.store', 'admin.report.status', 'admin.report.destroy', 'admin.report.get', 'admin.report.update', 'admin.report.pdf', 'admin.logout', 'admin.profile', 'admin.update.profile', 'admin.change.password', 'admin.update.password'];
+                    $allowedRoutes = ['admin.dashboard', 'admin.quickEnquiry.index', 'admin.quickEnquiry.getall', 'admin.quickEnquiry.store', 'admin.quickEnquiry.status', 'admin.quickEnquiry.destroy', 'admin.quickEnquiry.get', 'admin.quickEnquiry.update', 'admin.logout', 'admin.profile', 'admin.update.profile', 'admin.change.password', 'admin.update.password'];
                     if(!in_array($request->route()->getName(), $allowedRoutes)){
                         return redirect()->route('admin.dashboard')->with('error', 'You do not have permission to access this page.');
                     }

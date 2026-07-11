@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\QuickEnquiry;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use Exception;
 
 class QuickEnquiryController extends Controller
@@ -16,7 +18,13 @@ class QuickEnquiryController extends Controller
     }
 
     public function getall(Request $request){
-        $enquiries = QuickEnquiry::orderBy('id','desc')->get();
+        $query = QuickEnquiry::orderBy('id','desc');
+        
+        if (Auth::user() && Auth::user()->role == 'user') {
+            $query->whereDate('created_at', Carbon::today());
+        }
+        
+        $enquiries = $query->get();
         return response()->json(['data' => $enquiries]);
     }
 
