@@ -20,6 +20,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
+    protected $guarded = [];
 
     protected $appends = ['avatar_full_path'];
 

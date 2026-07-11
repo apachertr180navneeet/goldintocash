@@ -66,7 +66,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('profile', 'updateAdminProfile')->name('update.profile');
 
 
-        foreach (['goldLoan','branch','branchUser','report', 'quickEnquiry'] as $resource) {
+        foreach (['goldLoan','branch','branchUser','report', 'quickEnquiry', 'user'] as $resource) {
             Route::prefix($resource)->name("$resource.")->group(function () use ($resource) {
                 $controller = "App\Http\Controllers\Admin\\" . ucfirst($resource) . "Controller";
                 Route::get('/', [$controller, 'index'])->name('index');

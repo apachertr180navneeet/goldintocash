@@ -27,6 +27,7 @@
 			['route' => 'admin.goldLoan.index', 'text' => 'Gold Loan'],
 			['route' => 'admin.branch.index', 'text' => 'Branch'],
 			['route' => 'admin.branchUser.index', 'text' => 'Branch User'],
+			['route' => 'admin.user.index', 'text' => 'Users'],
 			['route' => 'admin.report.index', 'text' => 'Reports'],
 			['route' => 'admin.quickEnquiry.index', 'text' => 'Quick Enquiries'],
 		] as $mastermenu)
