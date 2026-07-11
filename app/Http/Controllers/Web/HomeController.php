@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\{
     GoldLoan,
     Branch,
-    BranchUser
+    BranchUser,
+    QuickEnquiry
 };
 use Validator, Exception;
 
@@ -187,7 +188,16 @@ class HomeController extends Controller
                 'gold_loan_amount' => 'nullable',
             ]);
 
-            // 2️⃣ Prepare SMS message
+            // 2️⃣ Save to database
+            QuickEnquiry::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'city' => $request->city,
+                'gold_net_weight' => $request->gold_net_weight,
+                'gold_loan_amount' => $request->gold_loan_amount,
+            ]);
+
+            // 3️⃣ Prepare SMS message
             $message = "Quick Enquiry\n"
                     . "Name: {$request->name}\n"
                     . "Phone: {$request->phone}\n"
@@ -195,7 +205,7 @@ class HomeController extends Controller
                     . "Gold Weight: {$request->gold_net_weight}g\n"
                     . "Loan Amount: ₹{$request->gold_loan_amount}";
 
-            // 3️⃣ Send SMS using CURL
+            // 4️⃣ Send SMS using CURL
 
             $authKey = $setting;  // your auth key
             $mobileNumber = "91{$request->phone}"; // single or comma separated

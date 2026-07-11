@@ -116,7 +116,7 @@
                                 <input
                                     type="text"
                                     class="form-control"
-                                    name="weight"
+                                    name="gold_net_weight"
                                     id="weight"
                                     placeholder="e.g. 25.5"
                                     required
@@ -131,7 +131,7 @@
                                 <input
                                     type="text"
                                     class="form-control"
-                                    name="amount"
+                                    name="gold_loan_amount"
                                     id="amount"
                                     placeholder="e.g. 75000"
                                     required
