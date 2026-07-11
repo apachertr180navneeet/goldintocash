@@ -23,7 +23,6 @@
                                 <th>Gold Weight</th>
                                 <th>Loan Amount</th>
                                 <th>Submit Date</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -85,54 +84,10 @@ $('#quickEnquiriesTable').DataTable({
                 let submit_date = moment(row.created_at, "YYYY-MM-DD HH:mm:ss").format('DD/MM/YYYY');
                 return '<span>'+submit_date+'</span>';
             }
-        },
-        {
-            data: "action",
-            render: (data,type,row) => {
-                    return '<button type="button" class="btn btn-sm btn-danger" onclick="deleteEnquiry('+row.id+')">Delete</button>';
-            }
         }
         
     ],
 });
-
-
-
-function deleteEnquiry(userid){
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You want to delete this enquiry!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
-    }).then((result) => {
-        if(result.isConfirmed == true) {
-            var url = '{{ route("admin.quickEnquiry.destroy", ":userid") }}';
-            url = url.replace(':userid', userid);
-            $.ajax({
-                type: "DELETE",
-                url: url,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {'_token': "{{ csrf_token() }}"},
-                success: function(response) {
-                    if(response.success){
-                        setFlesh('success','Enquiry Deleted Successfully');
-                        $('#quickEnquiriesTable').DataTable().ajax.reload();
-                    }else{
-                        setFlesh('error','There is some problem deleting this enquiry. Please try again.');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    setFlesh('error', 'Error: ' + error);
-                }
-            });
-        }
-    })
-}
 
 
 
